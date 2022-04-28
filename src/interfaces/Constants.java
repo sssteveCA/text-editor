@@ -57,6 +57,11 @@ public interface Constants {
 	int FC_BTN2_WIDTH = 130;
 	int FC_BTN2_X = 250;
 	int FC_BTN2_Y = 370;
+	//JComboBox
+	int FC_JBB1_HEIGHT = 20;
+	int FC_JBB1_WIDTH = 200;
+	int FC_JBB1_X = 200;
+	int FC_JBB1_Y = 310;
 	//JLabel
 	int FC_JLAB1_HEIGHT = 20;
 	int FC_JLAB1_WIDTH = 120;
@@ -70,6 +75,10 @@ public interface Constants {
 	int FC_JLAB3_WIDTH = 80;
 	int FC_JLAB3_X = 340;
 	int FC_JLAB3_Y = 10;
+	int FC_JLAB4_HEIGHT = 20;
+	int FC_JLAB4_WIDTH = 80;
+	int FC_JLAB4_X = 200;
+	int FC_JLAB4_Y = 285;
 	//JList
 	int FC_JLIST1_HEIGHT = 100;
 	int FC_JLIST1_WIDTH = 140;
@@ -114,6 +123,7 @@ public interface Constants {
 	String FC_JLAB1 = "Tipo di carattere:";
 	String FC_JLAB2 = "Stile:";
 	String FC_JLAB3 = "Dimensione:";
+	String FC_JLAB4 = "Scrittura:";
 	String FC_JP1 = "Esempio";
 	
 	//File

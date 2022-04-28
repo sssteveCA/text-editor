@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -25,6 +26,7 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	
 	public final JButton jb_ok = new JButton(FC_BTN1);
 	public final JButton jb_reset = new JButton(FC_BTN2);
+	public final JComboBox<String> jbb_writing = new JComboBox<String>(fl_writing);
 	public final JList<String> jlist_font = new JList<String>(fl_fonts);
 	public final JList<Byte> jlist_size = new JList<Byte>(fl_sizes);
 	public final JList<String> jlist_style = new JList<String>(fl_styles);
@@ -37,6 +39,7 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	private JLabel jl_font; //label "Tipi di carattere:"
 	private JLabel jl_style; //label "Stile:"
 	private JLabel jl_size; //label "Dimensione:"
+	private JLabel jl_writing; //label "Scrittura:"
 	private JPanel jp_example; //panel "Esempio"
 	private JPanel jp_font; //JPanel for fonts list
 	private JPanel jp_size; //JPanel for sizes list
@@ -45,6 +48,7 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	public MyFontChooser(TextEditor te, String title, boolean modal) {
 		super(te,title,modal);
 		this.setJButtons();
+		this.setJComboBoxs();
 		this.setJLabels();
 		this.setJPanels();
 		this.setJTextFields();
@@ -66,17 +70,26 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.add(jb_reset);
 	}
 	
+	//Set JComboBox objects properties
+	private void setJComboBoxs() {
+		this.jbb_writing.setBounds(FC_JBB1_X,FC_JBB1_Y,FC_JBB1_WIDTH,FC_JBB1_HEIGHT);
+		this.add(jbb_writing);
+	}
+	
 	//Set JLabel objects properties
 	private void setJLabels() {
 		this.jl_font = new JLabel(FC_JLAB1);
 		this.jl_font.setBounds(FC_JLAB1_X,FC_JLAB1_Y,FC_JLAB1_WIDTH,FC_JLAB1_HEIGHT);
+		this.add(jl_font);
 		this.jl_style = new JLabel(FC_JLAB2);
 		this.jl_style.setBounds(FC_JLAB2_X,FC_JLAB2_Y,FC_JLAB2_WIDTH,FC_JLAB2_HEIGHT);
+		this.add(jl_style);
 		this.jl_size = new JLabel(FC_JLAB3);
 		this.jl_size.setBounds(FC_JLAB3_X,FC_JLAB3_Y,FC_JLAB3_WIDTH,FC_JLAB3_HEIGHT);
-		this.add(jl_font);
-		this.add(jl_style);
 		this.add(jl_size);
+		this.jl_writing = new JLabel(FC_JLAB4);
+		this.jl_writing.setBounds(FC_JLAB4_X,FC_JLAB4_Y,FC_JLAB4_WIDTH,FC_JLAB4_HEIGHT);
+		this.add(jl_writing);
 	}
 	
 	//Set JPanel objects properties

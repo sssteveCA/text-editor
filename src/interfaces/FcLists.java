@@ -14,5 +14,9 @@ public interface FcLists {
 	String fl_styles[] = {
 			"Normale","Corsivo","Grassetto","Grassetto corsivo"
 	};
+	String fl_writing[] = {
+			"Occidentale","Greco","Turco","Baltico",
+			"Europa centrale","Cirillico","Vietnamita"
+	};
 
 }
