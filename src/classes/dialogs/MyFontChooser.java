@@ -25,7 +25,9 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	public final JButton jb_ok = new JButton(FC_BTN1);
 	public final JButton jb_reset = new JButton(FC_BTN2);
 	public final JList<String> jlist_font = new JList<String>(fl_fonts);
+	public final JList<String> jlist_style = new JList<String>(fl_styles);
 	public JScrollPane jsp_font;
+	public JScrollPane jsp_style;
 	public final JTextField jtf_font = new JTextField();
 	public final JTextField jtf_style = new JTextField();
 	public final JTextField jtf_size = new JTextField();
@@ -34,6 +36,7 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	private JLabel jl_size; //label "Dimensione:"
 	private JPanel jp_example; //panel "Esempio"
 	private JPanel jp_font; //JPanel for fonts list
+	private JPanel jp_style; //JPanel for styles list
 
 	public MyFontChooser(TextEditor te, String title, boolean modal) {
 		super(te,title,modal);
@@ -98,6 +101,17 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.jlist_font.setLayoutOrientation(JList.VERTICAL);
 		this.jp_font.add(jsp_font);
 		this.add(jp_font);
+		this.jp_style = new JPanel(new BorderLayout());
+		this.jp_style.setBounds(FC_JP3_X,FC_JP3_Y,FC_JP3_WIDTH,FC_JP3_HEIGHT);
+		this.jlist_style.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.jsp_style = new JScrollPane();
+		this.jsp_style.setViewportView(jlist_style);
+		this.jsp_style.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.jsp_style.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		this.jlist_style.setLayoutOrientation(JList.VERTICAL);
+		this.jp_style.add(jsp_style);
+		this.add(jp_style);
+		
 	}
 	
 }

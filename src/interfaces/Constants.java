@@ -78,8 +78,8 @@ public interface Constants {
 	//JPanel(Esempio, Tipo di Carattere, Stile, Dimensione)
 	int FC_JP1_HEIGHT = 100;
 	int FC_JP1_WIDTH = 200;
-	int FC_JP1_X = 185;
-	int FC_JP1_Y = 200;
+	int FC_JP1_X = 200;
+	int FC_JP1_Y = 180;
 	int FC_JP2_HEIGHT = 100;
 	int FC_JP2_WIDTH = 170;
 	int FC_JP2_X = 10;
