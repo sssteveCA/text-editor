@@ -42,10 +42,41 @@ public interface Constants {
 	String ERR_UNKNOWN = "Errore sconosciuto";
 	
 	//Font Chooser dialog number constants
-	int FC_WINDOW_HEIGHT = 500;
+	int FC_WINDOW_HEIGHT = 450;
 	int FC_WINDOW_WIDTH = 400;
 	int FC_WINDOW_X = 100;
 	int FC_WINDOW_Y = 100;
+	//JButton
+	int FC_BTN1_HEIGHT = 20;
+	int FC_BTN1_WIDTH = 130;
+	int FC_BTN1_X = 100;
+	int FC_BTN1_Y = 370;
+	int FC_BTN2_HEIGHT = 20;
+	int FC_BTN2_WIDTH = 130;
+	int FC_BTN2_X = 250;
+	int FC_BTN2_Y = 370;
+	//JLabel
+	int FC_JLAB1_HEIGHT = 20;
+	int FC_JLAB1_WIDTH = 120;
+	int FC_JLAB1_X = 10;
+	int FC_JLAB1_Y = 10;
+	int FC_JLAB2_HEIGHT = 20;
+	int FC_JLAB2_WIDTH = 60;
+	int FC_JLAB2_X = 180;
+	int FC_JLAB2_Y = 10;
+	int FC_JLAB3_HEIGHT = 20;
+	int FC_JLAB3_WIDTH = 80;
+	int FC_JLAB3_X = 310;
+	int FC_JLAB3_Y = 10;
+	
+	//Font chooser dialog string constants
+	//JButton
+	String FC_BTN1 = "OK";
+	String FC_BTN2 = "Annulla";
+	//JLabel
+	String FC_JLAB1 = "Tipo di carattere:";
+	String FC_JLAB2 = "Stile:";
+	String FC_JLAB3 = "Dimensione:";
 	
 	//File
 	String FILE_SAVED = "Il file è stato salvato";
