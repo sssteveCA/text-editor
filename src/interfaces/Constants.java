@@ -62,12 +62,25 @@ public interface Constants {
 	int FC_JLAB1_Y = 10;
 	int FC_JLAB2_HEIGHT = 20;
 	int FC_JLAB2_WIDTH = 60;
-	int FC_JLAB2_X = 180;
+	int FC_JLAB2_X = 160;
 	int FC_JLAB2_Y = 10;
 	int FC_JLAB3_HEIGHT = 20;
 	int FC_JLAB3_WIDTH = 80;
-	int FC_JLAB3_X = 310;
+	int FC_JLAB3_X = 300;
 	int FC_JLAB3_Y = 10;
+	//JTextField
+	int FC_TFIELD1_HEIGHT = 20;
+	int FC_TFIELD1_WIDTH = 140;
+	int FC_TFIELD1_X = 10;
+	int FC_TFIELD1_Y = 40;
+	int FC_TFIELD2_HEIGHT = 20;
+	int FC_TFIELD2_WIDTH = 110;
+	int FC_TFIELD2_X = 160;
+	int FC_TFIELD2_Y = 40;
+	int FC_TFIELD3_HEIGHT = 20;
+	int FC_TFIELD3_WIDTH = 80;
+	int FC_TFIELD3_X = 300;
+	int FC_TFIELD3_Y = 40;
 	
 	//Font chooser dialog string constants
 	//JButton
