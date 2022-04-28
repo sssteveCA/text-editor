@@ -8,6 +8,9 @@ public interface FcLists {
 			"MS Sans Serif", "Ms Serif", "Roman",
 			"Tahoma", "Times New Roman" ,"Verdana"
 	};
+	Byte fl_sizes[] = {
+			11,12,14,16,18,20,22,24,26,28,36,48,72
+	};
 	String fl_styles[] = {
 			"Normale","Corsivo","Grassetto","Grassetto corsivo"
 	};

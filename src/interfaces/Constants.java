@@ -88,6 +88,10 @@ public interface Constants {
 	int FC_JP3_WIDTH = 120;
 	int FC_JP3_X = 200;
 	int FC_JP3_Y = 70;
+	int FC_JP4_HEIGHT = 100;
+	int FC_JP4_WIDTH = 90;
+	int FC_JP4_X = 340;
+	int FC_JP4_Y = 70;
 	//JTextField
 	int FC_TFIELD1_HEIGHT = 20;
 	int FC_TFIELD1_WIDTH = 170;
