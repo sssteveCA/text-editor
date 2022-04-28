@@ -9,6 +9,7 @@ import classes.FileManager;
 import classes.FontUtils;
 import classes.dialogs.TextFind;
 import classes.dialogs.About;
+import classes.dialogs.MyFontChooser;
 import classes.frames.TextEditor;
 import interfaces.Constants;
 import interfaces.FmConstants;
@@ -106,6 +107,7 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		}
 		else if(cmd == Menu.mFormat.FONT.toString()) {
 			//Format -> Font
+			MyFontChooser mfc = new MyFontChooser(this.te,DLG_FONTCHOOSER_TITLE,true);
 		}
 		else if(cmd == Menu.mView.mZoom.ZOOM_IN.toString()) {
 			//View -> Zoom -> Zoom In

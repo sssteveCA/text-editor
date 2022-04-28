@@ -33,12 +33,19 @@ public interface Constants {
 	//Dialog box
 	String DLG_ABOUT_TITLE = "Informazioni su Text Editor";
 	String DLG_EXIT_TITLE = "Chiudi il programma";
+	String DLG_FONTCHOOSER_TITLE = "Carattere";
 	String DLG_OPENFILE_TITLE = "Apri file";
 	String DLG_SAVEFILE_TITLE = "Salva file";
 	String DLG_TEXTFIND_TITLE = "Trova";
 	
 	//Errors
 	String ERR_UNKNOWN = "Errore sconosciuto";
+	
+	//Font Chooser dialog number constants
+	int FC_WINDOW_HEIGHT = 500;
+	int FC_WINDOW_WIDTH = 400;
+	int FC_WINDOW_X = 100;
+	int FC_WINDOW_Y = 100;
 	
 	//File
 	String FILE_SAVED = "Il file è stato salvato";
