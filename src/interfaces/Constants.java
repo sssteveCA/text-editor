@@ -42,8 +42,10 @@ public interface Constants {
 	String ERR_UNKNOWN = "Errore sconosciuto";
 	
 	//Font Chooser dialog number constants
-	int FC_WINDOW_HEIGHT = 450;
-	int FC_WINDOW_WIDTH = 400;
+	//int FC_WINDOW_HEIGHT = 450;
+	int FC_WINDOW_HEIGHT = 500;
+	//int FC_WINDOW_WIDTH = 400;
+	int FC_WINDOW_WIDTH = 450;
 	int FC_WINDOW_X = 100;
 	int FC_WINDOW_Y = 100;
 	//JButton
@@ -62,24 +64,42 @@ public interface Constants {
 	int FC_JLAB1_Y = 10;
 	int FC_JLAB2_HEIGHT = 20;
 	int FC_JLAB2_WIDTH = 60;
-	int FC_JLAB2_X = 160;
+	int FC_JLAB2_X = 200;
 	int FC_JLAB2_Y = 10;
 	int FC_JLAB3_HEIGHT = 20;
 	int FC_JLAB3_WIDTH = 80;
-	int FC_JLAB3_X = 300;
+	int FC_JLAB3_X = 340;
 	int FC_JLAB3_Y = 10;
+	//JList
+	int FC_JLIST1_HEIGHT = 100;
+	int FC_JLIST1_WIDTH = 140;
+	int FC_JLIST1_X = 10;
+	int FC_JLIST1_Y = 70;
+	//JPanel(Esempio, Tipo di Carattere, Stile, Dimensione)
+	int FC_JP1_HEIGHT = 100;
+	int FC_JP1_WIDTH = 200;
+	int FC_JP1_X = 185;
+	int FC_JP1_Y = 200;
+	int FC_JP2_HEIGHT = 100;
+	int FC_JP2_WIDTH = 170;
+	int FC_JP2_X = 10;
+	int FC_JP2_Y = 70;
+	int FC_JP3_HEIGHT = 100;
+	int FC_JP3_WIDTH = 120;
+	int FC_JP3_X = 200;
+	int FC_JP3_Y = 70;
 	//JTextField
 	int FC_TFIELD1_HEIGHT = 20;
-	int FC_TFIELD1_WIDTH = 140;
+	int FC_TFIELD1_WIDTH = 170;
 	int FC_TFIELD1_X = 10;
 	int FC_TFIELD1_Y = 40;
 	int FC_TFIELD2_HEIGHT = 20;
-	int FC_TFIELD2_WIDTH = 110;
-	int FC_TFIELD2_X = 160;
+	int FC_TFIELD2_WIDTH = 120;
+	int FC_TFIELD2_X = 200;
 	int FC_TFIELD2_Y = 40;
 	int FC_TFIELD3_HEIGHT = 20;
-	int FC_TFIELD3_WIDTH = 80;
-	int FC_TFIELD3_X = 300;
+	int FC_TFIELD3_WIDTH = 90;
+	int FC_TFIELD3_X = 340;
 	int FC_TFIELD3_Y = 40;
 	
 	//Font chooser dialog string constants
@@ -90,6 +110,7 @@ public interface Constants {
 	String FC_JLAB1 = "Tipo di carattere:";
 	String FC_JLAB2 = "Stile:";
 	String FC_JLAB3 = "Dimensione:";
+	String FC_JP1 = "Esempio";
 	
 	//File
 	String FILE_SAVED = "Il file è stato salvato";
