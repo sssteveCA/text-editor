@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
+import classes.events.FcClickEvent;
 import classes.frames.TextEditor;
 import interfaces.Constants;
 import interfaces.FcLists;
@@ -59,6 +60,8 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	private void setJButtons() {
 		this.jb_ok.setBounds(FC_BTN1_X,FC_BTN1_Y,FC_BTN1_WIDTH,FC_BTN1_HEIGHT);
 		this.jb_reset.setBounds(FC_BTN2_X,FC_BTN2_Y,FC_BTN2_WIDTH,FC_BTN2_HEIGHT);
+		this.jb_ok.addActionListener(new FcClickEvent(this));
+		this.jb_reset.addActionListener(new FcClickEvent(this));
 		this.add(jb_ok);
 		this.add(jb_reset);
 	}
