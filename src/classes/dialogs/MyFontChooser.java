@@ -1,6 +1,7 @@
 package classes.dialogs;
 
 import java.awt.BorderLayout;
+import java.awt.GraphicsEnvironment;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -24,13 +25,15 @@ import interfaces.FcLists;
 public class MyFontChooser extends JDialog implements Constants,FcLists {
 	
 	private static final long serialVersionUID = 1L;
+	//Available font list in OS
+	private final String availableFonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 	
 	private TextEditor te;
 	
 	public final JButton jb_ok = new JButton(FC_BTN1);
 	public final JButton jb_reset = new JButton(FC_BTN2);
 	public final JComboBox<String> jbb_writing = new JComboBox<String>(fl_writing);
-	public final JList<String> jlist_font = new JList<String>(fl_fonts);
+	public final JList<String> jlist_font = new JList<String>(this.availableFonts);
 	public final JList<Byte> jlist_size = new JList<Byte>(fl_sizes);
 	public final JList<String> jlist_style = new JList<String>(fl_styles);
 	public JScrollPane jsp_font;

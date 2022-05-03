@@ -1,6 +1,7 @@
 package classes.events;
 
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -42,33 +43,41 @@ public class FcClickEvent implements ActionListener,FcLists{
 		String fontStyle = this.mfc.jlist_style.getSelectedValue() != null ? this.mfc.jlist_style.getSelectedValue().toString() : null;
 		String fontSize = this.mfc.jlist_size.getSelectedValue() != null ? this.mfc.jlist_size.getSelectedValue().toString() : null;
 		String writing = this.mfc.jbb_writing.getSelectedItem().toString();
-		System.out.println("fontName => "+fontName);
+		/*System.out.println("fontName => "+fontName);
 		System.out.println("fontStyle => "+fontStyle);
 		System.out.println("fontSize => "+fontSize);
-		System.out.println("writing => "+writing);
+		System.out.println("writing => "+writing);*/
+		String fName = font.getFontName();
+		int fStyle = font.getStyle();
+		int fSize = font.getSize();
+		if(fontName != null) {
+			//font name selected in list
+			fName = fontName;
+		}//if(fontName != null) {
 		if(fontStyle != null) {
 			//font style selected in list
 			if(fontStyle.equals(fl_styles[0])) {
 				//Normal style
-				font = font.deriveFont(Font.PLAIN);
+				fStyle = Font.PLAIN;
 			}
 			else if(fontStyle.equals(fl_styles[1])) {
 				//Italic style
-				font = font.deriveFont(Font.ITALIC);
+				fStyle = Font.ITALIC;
 			}
 			if(fontStyle.equals(fl_styles[2])) {
 				//Bold style
-				font = font.deriveFont(Font.BOLD);
+				fStyle = Font.BOLD;
 			}
 			if(fontStyle.equals(fl_styles[0])) {
 				//Italic bold style
-				font = font.deriveFont(Font.BOLD|Font.ITALIC);
+				fStyle = Font.BOLD|Font.ITALIC;
 			}
 		}//if(fontStyle != null) {
 		if(fontSize != null) {
 			//font size selected in list
-			font = font.deriveFont(Float.parseFloat(fontSize));
+			fSize = Integer.parseInt(fontSize);
 		}
+		font = new Font(fName,fStyle,fSize);
 		this.te.textarea.setFont(font);
 	}
 
