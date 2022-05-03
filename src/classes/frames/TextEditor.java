@@ -46,6 +46,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 				miNew.addActionListener(new TeClickEvent(this));
 				miOpen.addActionListener(new TeClickEvent(this));
 				miSave.addActionListener(new TeClickEvent(this));
+				miPrint.addActionListener(new TeClickEvent(this));
 				miExit.addActionListener(new TeClickEvent(this));
 			mFile.add(miNew);
 			mFile.add(miOpen);

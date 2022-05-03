@@ -10,6 +10,7 @@ import classes.FontUtils;
 import classes.dialogs.TextFind;
 import classes.dialogs.About;
 import classes.dialogs.MyFontChooser;
+import classes.dialogs.PrintDialog;
 import classes.frames.TextEditor;
 import interfaces.Constants;
 import interfaces.FmConstants;
@@ -70,6 +71,7 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		}//else if(cmd == Menu.mFile.SETPAGE.toString()) {
 		else if(cmd == Menu.mFile.PRINT.toString()) {
 			//File -> Print
+			PrintDialog pd = new PrintDialog(this.te);
 		}//else if(cmd == Menu.mFile.PRINT.toString) {
 		else if(cmd == Menu.mFile.EXIT.toString()) {
 			//File -> Exit
