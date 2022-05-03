@@ -14,7 +14,6 @@ public interface MenuVals {
 			NEW("Nuovo"),
 			OPEN("Apri"),
 			SAVE("Salva"),
-			SETPAGE("Imposta pagina"),
 			PRINT("Stampa"),
 			EXIT("Esci");
 			

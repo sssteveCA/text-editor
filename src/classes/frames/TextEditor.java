@@ -40,7 +40,6 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 				JMenuItem miNew = new JMenuItem(Menu.mFile.NEW.toString());
 				JMenuItem miOpen = new JMenuItem(Menu.mFile.OPEN.toString());
 				JMenuItem miSave = new JMenuItem(Menu.mFile.SAVE.toString());
-				JMenuItem miSetPage = new JMenuItem(Menu.mFile.SETPAGE.toString());
 				JMenuItem miPrint = new JMenuItem(Menu.mFile.PRINT.toString());
 				JMenuItem miExit = new JMenuItem(Menu.mFile.EXIT.toString());
 				miNew.addActionListener(new TeClickEvent(this));
@@ -52,7 +51,6 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 			mFile.add(miOpen);
 			mFile.add(miSave);
 			mFile.addSeparator();
-			mFile.add(miSetPage);
 			mFile.add(miPrint);
 			mFile.addSeparator();
 			mFile.add(miExit);

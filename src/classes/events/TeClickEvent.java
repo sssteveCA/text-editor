@@ -66,9 +66,6 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 				}
 			}
 		}//else if(cmd == Menu.mFile.SAVE.toString()) {
-		else if(cmd == Menu.mFile.SETPAGE.toString()) {
-			//File -> Set Page
-		}//else if(cmd == Menu.mFile.SETPAGE.toString()) {
 		else if(cmd == Menu.mFile.PRINT.toString()) {
 			//File -> Print
 			PrintDialog pd = new PrintDialog(this.te);
@@ -106,6 +103,15 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		}
 		else if(cmd == Menu.mFormat.AUTO_WRAP.toString()) {
 			//Format -> Auto Wrap
+			//enable word wrap if is disabled and viceversa
+			boolean lineWrap = this.te.textarea.getLineWrap();
+			boolean wordWrap = this.te.textarea.getWrapStyleWord();
+			if(!lineWrap)lineWrap = true;
+			else lineWrap = false;
+			if(!wordWrap) wordWrap = true;
+			else wordWrap = false;
+			this.te.textarea.setLineWrap(lineWrap);
+			this.te.textarea.setWrapStyleWord(wordWrap);
 		}
 		else if(cmd == Menu.mFormat.FONT.toString()) {
 			//Format -> Font
