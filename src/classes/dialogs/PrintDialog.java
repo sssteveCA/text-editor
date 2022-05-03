@@ -1,5 +1,6 @@
 package classes.dialogs;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
@@ -32,7 +33,7 @@ public class PrintDialog implements Printable {
 	@Override
 	public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
 		// TODO Auto-generated method stub
-		System.out.println("PrintDialog print");
+		this.showPrintInfo(graphics, pageFormat, pageIndex);
 		if(pageIndex > 0) {
 			return NO_SUCH_PAGE;
 		}
@@ -56,7 +57,6 @@ public class PrintDialog implements Printable {
 		if(ok) {
 			//User wants print the document
 			try {
-				System.out.println("PrintDialog pj.print");
 				this.pj.print(pras);
 			} catch (PrinterException e) {
 				// TODO Auto-generated catch block
@@ -64,5 +64,53 @@ public class PrintDialog implements Printable {
 				e.printStackTrace();
 			}
 		}//if(ok) {
+	}
+	
+	//show print info when user click print button
+	private void showPrintInfo(Graphics g, PageFormat pf, int pi) {
+		System.out.println("Larghezza pagina => "+pf.getWidth());
+		System.out.println("Altezza pagina => "+pf.getHeight());
+		System.out.println("Punto X del primo carattere da stampare => "+pf.getImageableX());
+		System.out.println("Punto Y del primo carattere da stampare => "+pf.getImageableY());
+		System.out.println("Larghezza dell'area di stampa => "+pf.getImageableWidth());
+		System.out.println("Altezza dell'area di stampa => "+pf.getImageableHeight());
+		int orientation = pf.getOrientation();
+		String strOrientation = "";
+		switch(orientation) {
+			case PageFormat.PORTRAIT:
+				strOrientation = "Verticale";
+				break;
+			case PageFormat.LANDSCAPE:
+				strOrientation = "Orizzontale";
+				break;
+			case PageFormat.REVERSE_LANDSCAPE:
+				strOrientation = "Orizzontale capovolto";
+				break;
+			default:
+				strOrientation = "Sconosciuto";
+				break;
+		}
+		System.out.println("Orientamento => "+strOrientation);
+		Font font = g.getFont();
+		System.out.println("Nome del font utilizzato => "+font.getFontName());
+		System.out.println("Famiglia del font => "+font.getFamily());
+		System.out.println("Dimensione del font => "+font.getSize());
+		int style = font.getStyle();
+		String strStyle = "";
+		switch(style) {
+			case Font.BOLD:
+				strStyle = "Grassetto ";
+				break;
+			case Font.ITALIC:
+				strStyle = "Corsivo ";
+				break;
+			case Font.PLAIN:
+				strStyle = "Normale ";
+				break;
+			default:
+				strStyle = "Sconosciuto";
+				break;
+		}
+		System.out.println("Stile del font => "+strStyle);
 	}
 }
