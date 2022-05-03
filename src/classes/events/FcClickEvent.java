@@ -23,6 +23,7 @@ public class FcClickEvent implements ActionListener{
 		Object fired = e.getSource(); //object when event occurred
 		if(fired.equals(this.mfc.jb_ok)) {
 			//Ok button pressed
+			this.okClickActions();
 			this.mfc.dispose();
 		}
 		else if(fired.equals(this.mfc.jb_reset)) {
@@ -34,7 +35,14 @@ public class FcClickEvent implements ActionListener{
 	
 	//Actions when user press OK button in Font Chooser dialog
 	private void okClickActions() {
-		
+		String fontName = this.mfc.jlist_font.getSelectedValue().toString();
+		String fontStyle = this.mfc.jlist_style.getSelectedValue().toString();
+		String fontSize = this.mfc.jlist_size.getSelectedValue().toString();
+		String writing = this.mfc.jbb_writing.getSelectedItem().toString();
+		System.out.println("fontName => "+fontName);
+		System.out.println("fontStyle => "+fontStyle);
+		System.out.println("fontSize => "+fontSize);
+		System.out.println("writing => "+writing);
 	}
 
 }
