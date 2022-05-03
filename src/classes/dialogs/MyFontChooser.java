@@ -25,6 +25,8 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private TextEditor te;
+	
 	public final JButton jb_ok = new JButton(FC_BTN1);
 	public final JButton jb_reset = new JButton(FC_BTN2);
 	public final JComboBox<String> jbb_writing = new JComboBox<String>(fl_writing);
@@ -48,6 +50,7 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 
 	public MyFontChooser(TextEditor te, String title, boolean modal) {
 		super(te,title,modal);
+		this.te = te;
 		this.setJButtons();
 		this.setJComboBoxs();
 		this.setJLabels();
@@ -66,8 +69,6 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	private void setJButtons() {
 		this.jb_ok.setBounds(FC_BTN1_X,FC_BTN1_Y,FC_BTN1_WIDTH,FC_BTN1_HEIGHT);
 		this.jb_reset.setBounds(FC_BTN2_X,FC_BTN2_Y,FC_BTN2_WIDTH,FC_BTN2_HEIGHT);
-		this.jb_ok.addActionListener(new FcClickEvent(this));
-		this.jb_reset.addActionListener(new FcClickEvent(this));
 		this.add(jb_ok);
 		this.add(jb_reset);
 	}
@@ -148,6 +149,8 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.jlist_font.addListSelectionListener(new FcSelectionEvent(this));
 		this.jlist_size.addListSelectionListener(new FcSelectionEvent(this));
 		this.jlist_style.addListSelectionListener(new FcSelectionEvent(this));
+		this.jb_ok.addActionListener(new FcClickEvent(this,this.te));
+		this.jb_reset.addActionListener(new FcClickEvent(this,this.te));
 	}
 	
 }
