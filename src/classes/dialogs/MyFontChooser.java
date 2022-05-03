@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import classes.events.FcClickEvent;
+import classes.events.FcSelectionEvent;
 import classes.frames.TextEditor;
 import interfaces.Constants;
 import interfaces.FcLists;
@@ -53,6 +54,7 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.setJPanels();
 		this.setJTextFields();
 		this.setScrollLists();
+		this.addListeners();
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(FC_WINDOW_WIDTH, FC_WINDOW_HEIGHT);
 		this.setLocation(FC_WINDOW_X,FC_WINDOW_Y);
@@ -139,6 +141,13 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.jp_size.add(jsp_size);
 		this.add(jp_size);
 		
+	}
+	
+	//add events to Font Chooser diaog elements
+	private void addListeners() {
+		this.jlist_font.addListSelectionListener(new FcSelectionEvent(this));
+		this.jlist_size.addListSelectionListener(new FcSelectionEvent(this));
+		this.jlist_style.addListSelectionListener(new FcSelectionEvent(this));
 	}
 	
 }
