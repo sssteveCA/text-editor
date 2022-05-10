@@ -30,6 +30,8 @@ public class TfClickEvent implements ActionListener,Constants{
 		Object fired = e.getSource();
 		if(fired.equals(this.tf.jb_findNext)) {
 			//Find Next button pressed
+			//JTextArea of parent frame needs the focus
+			this.te.textarea.requestFocus();
 			//Check which JRadioButton is selected(if down is not checked,the down JRadioButton is selected)
 			boolean downSelected = this.tf.jr_down.isSelected();
 			//get JTextArea mark position
@@ -45,7 +47,7 @@ public class TfClickEvent implements ActionListener,Constants{
 				index = text.indexOf(search,markPos);
 			}//if(downSelected) {
 			else {
-				index = text.lastIndexOf(search,markPos);
+				index = text.lastIndexOf(search,markPos-1);
 			}
 			if(index > -1) {
 				//Substring found
