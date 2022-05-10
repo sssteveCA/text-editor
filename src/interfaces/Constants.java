@@ -191,7 +191,7 @@ public interface Constants {
 	
 	//Text Find dialog string constants
 	//JButton
-	String TF_BTN1 = "Trova sucessivo";
+	String TF_BTN1 = "Trova successivo";
 	String TF_BTN2 = "Annulla";
 	//JCheckBox
 	String TF_JC1 = "Maiuscole/minuscole";

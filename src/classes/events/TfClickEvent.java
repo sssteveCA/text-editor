@@ -32,6 +32,8 @@ public class TfClickEvent implements ActionListener,Constants{
 			//Find Next button pressed
 			//JTextArea of parent frame needs the focus
 			this.te.textarea.requestFocus();
+			//Check if the search must be case insentive
+			boolean caseInsensitive = this.tf.jc_textCase.isSelected();
 			//Check which JRadioButton is selected(if down is not checked,the down JRadioButton is selected)
 			boolean downSelected = this.tf.jr_down.isSelected();
 			//get JTextArea mark position
@@ -44,10 +46,12 @@ public class TfClickEvent implements ActionListener,Constants{
 			//get index of substring(if JRadioButton down is selected the search of substring will be forwards otherwise backwards)
 			int index = -1;
 			if(downSelected) {
-				index = text.indexOf(search,markPos);
+				if(!caseInsensitive) index = text.toLowerCase().indexOf(search.toLowerCase(),markPos);
+				else index = text.indexOf(search,markPos);
 			}//if(downSelected) {
 			else {
-				index = text.lastIndexOf(search,markPos-1);
+				if(!caseInsensitive) index = text.toLowerCase().lastIndexOf(search.toLowerCase(),markPos-1);
+				else index = text.lastIndexOf(search,markPos-1);
 			}
 			if(index > -1) {
 				//Substring found
