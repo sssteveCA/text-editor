@@ -5,6 +5,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import classes.events.TeCaretEvent;
@@ -17,6 +18,7 @@ import interfaces.PopupVals;
 public class TextEditor extends JFrame implements Constants,MenuVals{
 
 	private static final long serialVersionUID = 1L;
+	private JScrollPane jsp_text; //Scroll bars for Text Editor window textarea
 	private String title; //title of the window
 	
 	public JTextArea textarea;
@@ -28,7 +30,9 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		this.textarea = new JTextArea();
 		this.textarea.addMouseListener(new TeMouseEvent(this));
 		this.textarea.addCaretListener(new TeCaretEvent(this));
-		this.add(this.textarea);
+		this.jsp_text = new JScrollPane(this.textarea);
+		//this.add(this.textarea);
+		this.add(jsp_text);
 		this.setJMenuBar(this.menu());
 		this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
