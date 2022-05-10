@@ -200,6 +200,8 @@ public interface Constants {
 	String TF_JLAB1 = "Trova: ";
 	//JPanel
 	String TF_JP1 = "Direzione";
+	//JOptionPane
+	String TF_JOP1_TITLE = "Text Editor";
 	//JRadioButton
 	String TF_RB1 = "Su";
 	String TF_RB2 = "Giù";

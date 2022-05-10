@@ -4,11 +4,17 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
+
 import classes.dialogs.TextFind;
 import classes.frames.TextEditor;
+import interfaces.Constants;
 
 //Click events listener of Text Find dialog
-public class TfClickEvent implements ActionListener{
+public class TfClickEvent implements ActionListener,Constants{
 	
 	TextFind tf;
 	TextEditor te;
@@ -47,16 +53,26 @@ public class TfClickEvent implements ActionListener{
 				int searchLen = search.length();
 				int start = index;
 				//Underline the substring search found in text
-				this.te.textarea.setSelectionStart(start);
 				int end = index+searchLen;
-				this.te.textarea.setSelectionEnd(end);
-				this.te.textarea.setSelectionColor(Color.blue);
-				this.te.textarea.select(start, end);
+				this.te.textarea.setSelectionColor(Color.BLUE);
+				
+				try {
+					Highlighter hg = this.te.textarea.getHighlighter();
+					hg.removeAllHighlights();
+					this.te.textarea.setHighlighter(hg);
+					this.te.textarea.getHighlighter().addHighlight(start, end, new DefaultHighlighter.DefaultHighlightPainter(Color.LIGHT_GRAY));
+				} catch (BadLocationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				if(downSelected) {
 					//If the search is downward the caret is set at the end of substring found
 					this.te.textarea.setCaretPosition(end);
 				}
 				else {
+					System.out.println("Direzione su");
+					System.out.println("Start => "+start);
+					System.out.println("End => "+end);
 					//If the search is upward the caret is set at the start of substring found
 					this.te.textarea.setCaretPosition(start);
 				}
@@ -64,6 +80,7 @@ public class TfClickEvent implements ActionListener{
 			}//if(index > -1) {
 			else {
 				//No substring found in the search direction selected
+				JOptionPane.showMessageDialog(this.te, "Impossibile trovare '"+search+"'",TF_JOP1_TITLE,JOptionPane.WARNING_MESSAGE);
 			}
 			
 		}//if(fired.equals(this.tf.jb_findNext)) {
