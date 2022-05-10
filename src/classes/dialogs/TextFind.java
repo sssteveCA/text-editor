@@ -1,6 +1,7 @@
 package classes.dialogs;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -21,6 +22,7 @@ public class TextFind extends JDialog implements Constants{
 	
 	private TextEditor te;
 	
+	public final ButtonGroup group = new ButtonGroup();
 	public final JButton jb_findNext = new JButton(TF_BTN1); //Button 'Trova successivo'
 	public final JButton jb_cancel = new JButton(TF_BTN2); //Button 'Annulla'
 	public final JCheckBox jc_textCase = new JCheckBox(TF_JC1);
@@ -48,6 +50,9 @@ public class TextFind extends JDialog implements Constants{
 		this.jb_cancel.addActionListener(new TfClickEvent(this,this.te));
 		this.jr_up.setBounds(TF_RB1_X,TF_RB1_Y,TF_RB1_WIDTH,TF_RB1_HEIGHT);
 		this.jr_down.setBounds(TF_RB2_X,TF_RB2_Y,TF_RB2_WIDTH,TF_RB2_HEIGHT);
+		this.jr_down.setSelected(true);
+		this.group.add(jr_up);
+		this.group.add(jr_down);
 		this.jp_direction = new JPanel();
 		this.jp_direction.setBounds(TF_JP1_X,TF_JP1_Y,TF_JP1_WIDTH,TF_JP1_HEIGHT);
 		this.jp_direction.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),TF_JP1));
