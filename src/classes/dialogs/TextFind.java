@@ -18,6 +18,8 @@ public class TextFind extends JDialog implements Constants{
 	
 	private static final long serialVersionUID = 1L;
 	
+	private TextEditor te;
+	
 	public final JButton jb_findNext = new JButton(TF_BTN1); //Button 'Trova successivo'
 	public final JButton jb_cancel = new JButton(TF_BTN2); //Button 'Annulla'
 	public final JCheckBox jc_textCase = new JCheckBox(TF_JC1);
@@ -30,6 +32,7 @@ public class TextFind extends JDialog implements Constants{
 	
 	public TextFind(TextEditor te,String title) {
 		super(te,title);
+		this.te = te;
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(TF_WINDOW_WIDTH,TF_WINDOW_HEIGHT);
 		this.setLocation(TF_WINDOW_X, TF_WINDOW_Y);

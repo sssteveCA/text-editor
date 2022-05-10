@@ -21,7 +21,7 @@ public class TfChangeEvent implements DocumentListener {
 		System.out.println("TfChangeEvent inserimento");
 		javax.swing.text.Document doc = e.getDocument();
 		try {
-			System.out.println("Testo => "+doc.getText(0,doc.getLength() - 1));
+			System.out.println("Testo => "+doc.getText(0,doc.getLength()));
 			System.out.println("Lunghezza => "+doc.getLength());
 		} catch (BadLocationException e1) {
 			// TODO Auto-generated catch block
@@ -36,7 +36,7 @@ public class TfChangeEvent implements DocumentListener {
 		System.out.println("TfChangeEvent rimozione");
 		javax.swing.text.Document doc = e.getDocument();
 		try {
-			System.out.println("Testo => "+doc.getText(0,doc.getLength() - 1));
+			System.out.println("Testo => "+doc.getText(0,doc.getLength()));
 			System.out.println("Lunghezza => "+doc.getLength());
 		} catch (BadLocationException e1) {
 			// TODO Auto-generated catch block
@@ -52,7 +52,7 @@ public class TfChangeEvent implements DocumentListener {
 		System.out.println("TfChangeEvent uno o più attributi cambiati");
 		javax.swing.text.Document doc = e.getDocument();
 		try {
-			System.out.println("Testo => "+doc.getText(0,doc.getLength() - 1));
+			System.out.println("Testo => "+doc.getText(0,doc.getLength()));
 			System.out.println("Lunghezza => "+doc.getLength());
 		} catch (BadLocationException e1) {
 			// TODO Auto-generated catch block
