@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import classes.events.TfChangeEvent;
 import classes.frames.TextEditor;
 import interfaces.Constants;
 
@@ -36,6 +37,7 @@ public class TextFind extends JDialog implements Constants{
 		this.jl_find = new JLabel(TF_JLAB1);
 		this.jl_find.setBounds(TF_JLAB1_X,TF_JLAB1_Y,TF_JLAB1_WIDTH,TF_JLAB1_HEIGHT);
 		this.jt_field.setBounds(TF_TFIELD1_X,TF_TFIELD1_Y,TF_TFIELD1_WIDTH,TF_TFIELD1_HEIGHT);
+		this.jt_field.getDocument().addDocumentListener(new TfChangeEvent(this));
 		this.jb_findNext.setBounds(TF_BTN1_X,TF_BTN1_Y,TF_BTN1_WIDTH,TF_BTN1_HEIGHT);
 		this.jb_cancel.setBounds(TF_BTN2_X,TF_BTN2_Y,TF_BTN2_WIDTH,TF_BTN2_HEIGHT);
 		this.jr_up.setBounds(TF_RB1_X,TF_RB1_Y,TF_RB1_WIDTH,TF_RB1_HEIGHT);
