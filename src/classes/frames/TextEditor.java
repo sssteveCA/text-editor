@@ -7,6 +7,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
 
+import classes.events.TeCaretEvent;
 import classes.events.TeClickEvent;
 import classes.events.TeMouseEvent;
 import interfaces.Constants;
@@ -26,6 +27,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		super(title);
 		this.textarea = new JTextArea();
 		this.textarea.addMouseListener(new TeMouseEvent(this));
+		this.textarea.addCaretListener(new TeCaretEvent(this));
 		this.add(this.textarea);
 		this.setJMenuBar(this.menu());
 		this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
