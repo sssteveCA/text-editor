@@ -124,6 +124,7 @@ public interface Constants {
 	String FC_JLAB2 = "Stile:";
 	String FC_JLAB3 = "Dimensione:";
 	String FC_JLAB4 = "Scrittura:";
+	String FC_JLAB5 = "AaBbYyZz";
 	String FC_JP1 = "Esempio";
 	
 	//File

@@ -2,6 +2,7 @@ package classes.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridBagLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -33,6 +34,7 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	public final JButton jb_ok = new JButton(FC_BTN1);
 	public final JButton jb_reset = new JButton(FC_BTN2);
 	public final JComboBox<String> jbb_writing = new JComboBox<String>(fl_writing);
+	public final JLabel jl_preview = new JLabel(FC_JLAB5); //Preview font example text
 	public final JList<String> jlist_font = new JList<String>(this.availableFonts);
 	public final JList<Byte> jlist_size = new JList<Byte>(fl_sizes);
 	public final JList<String> jlist_style = new JList<String>(fl_styles);
@@ -101,8 +103,11 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	//Set JPanel objects properties
 	private void setJPanels() {
 		this.jp_example = new JPanel();
+		//Center JLabel in JPanel
+		this.jp_example.setLayout(new GridBagLayout());
 		this.jp_example.setBounds(FC_JP1_X,FC_JP1_Y,FC_JP1_WIDTH,FC_JP1_HEIGHT);
 		this.jp_example.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),FC_JP1));
+		this.jp_example.add(jl_preview);
 		this.add(jp_example);
 	}
 	
