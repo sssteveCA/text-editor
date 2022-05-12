@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagLayout;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -17,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
+import classes.common.Functions;
 import classes.events.FcClickEvent;
 import classes.events.FcSelectionEvent;
 import classes.frames.TextEditor;
@@ -63,6 +65,7 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.setJPanels();
 		this.setJTextFields();
 		this.setScrollLists();
+		this.setFontOptions();
 		this.addListeners();
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(FC_WINDOW_WIDTH, FC_WINDOW_HEIGHT);
@@ -117,12 +120,6 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.jtf_font.setBounds(FC_TFIELD1_X,FC_TFIELD1_Y,FC_TFIELD1_WIDTH,FC_TFIELD1_HEIGHT);
 		this.jtf_style.setBounds(FC_TFIELD2_X,FC_TFIELD2_Y,FC_TFIELD2_WIDTH,FC_TFIELD2_HEIGHT);
 		this.jtf_size.setBounds(FC_TFIELD3_X,FC_TFIELD3_Y,FC_TFIELD3_WIDTH,FC_TFIELD3_HEIGHT);
-		Font usedFont = this.te.textarea.getFont();
-		System.out.println("MyFontChooser nome font => "+usedFont.getFamily());
-		System.out.println("MyFontChooser style font => "+usedFont.getStyle());
-		System.out.println("MyFontChooser dimensione font => "+usedFont.getSize());
-		this.jtf_font.setText(usedFont.getFamily());
-		this.jtf_size.setText(String.valueOf(usedFont.getSize()));
 		this.add(jtf_font);
 		this.add(jtf_style);
 		this.add(jtf_size);
@@ -157,6 +154,24 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.jp_size.add(jsp_size);
 		this.add(jp_size);
 		
+	}
+	
+	//Set the JTextFields and JLists to used font options
+	@SuppressWarnings("unchecked")
+	private void setFontOptions() {
+		Font usedFont = this.te.textarea.getFont();
+		System.out.println("MyFontChooser nome font => "+usedFont.getFamily());
+		System.out.println("MyFontChooser style font => "+usedFont.getStyle());
+		System.out.println("MyFontChooser dimensione font => "+usedFont.getSize());
+		String family = usedFont.getFamily();
+		String style = Functions.getFontStyleStr(usedFont.getStyle());
+		Byte size = (byte) usedFont.getSize();
+		this.jtf_font.setText(family);
+		this.jtf_style.setText(style);
+		this.jtf_size.setText(String.valueOf(size));
+		this.jlist_font.setSelectedIndex(Functions.getIndexByString(jlist_font.getModel(), family));
+		this.jlist_style.setSelectedIndex(Functions.getIndexByString(jlist_style.getModel(), style));
+		this.jlist_size.setSelectedIndex(Functions.getIndexByByte(jlist_size.getModel(), size));
 	}
 	
 	//add events to Font Chooser diaog elements

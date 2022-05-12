@@ -1,6 +1,9 @@
 package classes.common;
 
 import java.awt.Font;
+import java.util.List;
+
+import javax.swing.ListModel;
 
 import interfaces.FcLists;
 
@@ -25,6 +28,32 @@ public class Functions implements FcLists {
 				break;
 		}
 		return styleName;
+	}
+	
+	//Get the index position of specified value in ListModel<Byte>
+		public static int getIndexByByte(ListModel<Byte> listModel, Byte value) {
+			int index = -1; //-1 if value not found
+			for(int i = 0; i < listModel.getSize(); i++) {
+				Byte elem = listModel.getElementAt(i);
+				if(elem.equals(value)) {
+					index = i;
+					break;
+				}
+			}
+			return index;
+		}
+	
+	//Get the index position of specified value in ListModel<String>
+	public static int getIndexByString(ListModel<String> listModel, String value) {
+		int index = -1; //-1 if value not found
+		for(int i = 0; i < listModel.getSize(); i++) {
+			String elem = listModel.getElementAt(i);
+			if(elem.equals(value)) {
+				index = i;
+				break;
+			}
+		}
+		return index;
 	}
 
 }
