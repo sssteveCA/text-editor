@@ -10,6 +10,15 @@ import interfaces.FcLists;
 //This class contains common static methods
 public class Functions implements FcLists {
 	
+	//Get the font style int representation
+	public static int getFontStyleInt(String style) {
+		int styleInt = Font.PLAIN;
+		if(style.equals(fl_styles[1]))styleInt = Font.ITALIC;
+		else if(style.equals(fl_styles[2]))styleInt = Font.BOLD;
+		else if(style.equals(fl_styles[3]))styleInt = Font.BOLD|Font.ITALIC;
+		return styleInt;
+	}
+	
 	//Get the font style String representation
 	public static String getFontStyleStr(int style) {
 		String styleName = null;
