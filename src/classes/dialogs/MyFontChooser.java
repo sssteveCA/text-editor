@@ -1,6 +1,7 @@
 package classes.dialogs;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagLayout;
 
@@ -116,6 +117,12 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.jtf_font.setBounds(FC_TFIELD1_X,FC_TFIELD1_Y,FC_TFIELD1_WIDTH,FC_TFIELD1_HEIGHT);
 		this.jtf_style.setBounds(FC_TFIELD2_X,FC_TFIELD2_Y,FC_TFIELD2_WIDTH,FC_TFIELD2_HEIGHT);
 		this.jtf_size.setBounds(FC_TFIELD3_X,FC_TFIELD3_Y,FC_TFIELD3_WIDTH,FC_TFIELD3_HEIGHT);
+		Font usedFont = this.te.textarea.getFont();
+		System.out.println("MyFontChooser nome font => "+usedFont.getFamily());
+		System.out.println("MyFontChooser style font => "+usedFont.getStyle());
+		System.out.println("MyFontChooser dimensione font => "+usedFont.getSize());
+		this.jtf_font.setText(usedFont.getFamily());
+		this.jtf_size.setText(String.valueOf(usedFont.getSize()));
 		this.add(jtf_font);
 		this.add(jtf_style);
 		this.add(jtf_size);

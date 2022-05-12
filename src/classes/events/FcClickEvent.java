@@ -68,7 +68,7 @@ public class FcClickEvent implements ActionListener,FcLists{
 				//Bold style
 				fStyle = Font.BOLD;
 			}
-			if(fontStyle.equals(fl_styles[0])) {
+			if(fontStyle.equals(fl_styles[3])) {
 				//Italic bold style
 				fStyle = Font.BOLD|Font.ITALIC;
 			}
