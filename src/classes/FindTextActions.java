@@ -54,7 +54,7 @@ public class FindTextActions implements FtaConstants{
 	private void setHashmap(HashMap<String, Object> options) {
 		if(options == null)options = new HashMap<String, Object>();
 		this.options = new HashMap<String, Object>();
-		if(options.containsKey("insensitive"))
+		if(options.containsKey("caseInsensitive"))
 			this.options.put("caseInsensitive",options.get("caseInsensitive"));
 		else
 			this.options.put("caseInsensitive", false);
@@ -107,6 +107,15 @@ public class FindTextActions implements FtaConstants{
 			this.jta_content.setHighlighter(hg);
 			try {
 				this.jta_content.getHighlighter().addHighlight(start, end, new DefaultHighlighter.DefaultHighlightPainter(Color.LIGHT_GRAY));
+				if(downSelected) {
+					//If the search is downward the caret is set at the end of substring found
+					this.jta_content.setCaretPosition(end);
+				}//if(downSelected) {
+				else {
+					//If the search is upward the caret is set at the start of substring found
+					this.jta_content.setCaretPosition(start);
+				}
+				ok = true;
 			} catch (BadLocationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
