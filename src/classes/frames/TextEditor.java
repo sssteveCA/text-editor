@@ -21,9 +21,13 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	private JScrollPane jsp_text; //Scroll bars for Text Editor window textarea
 	private String title; //title of the window
 	
+	
 	public JTextArea textarea;
 	//Right click 'Edit' popup menu
 	public final JPopupMenu pm_edit = new JPopupMenu(TE_PM1);
+	public String searchString = null; //Search string passed from Text Find dialog
+	public boolean caseInsensitive = false; //String search sensitive option from Text Find dialog(default false)
+	
 	
 	public TextEditor(String title) {
 		super(title);
@@ -73,6 +77,8 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 				miCopy.addActionListener(new TeClickEvent(this));
 				miPaste.addActionListener(new TeClickEvent(this));
 				miFind.addActionListener(new TeClickEvent(this));
+				miFindPre.addActionListener(new TeClickEvent(this));
+				miFindNext.addActionListener(new TeClickEvent(this));
 				miSelectAll.addActionListener(new TeClickEvent(this));
 			mEdit.add(miCut);
 			mEdit.add(miCopy);

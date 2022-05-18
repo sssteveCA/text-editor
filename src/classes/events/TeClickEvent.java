@@ -2,10 +2,14 @@ package classes.events;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.AbstractMap;
+import java.util.Map;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 import classes.FileManager;
+import classes.FindTextActions;
 import classes.FontUtils;
 import classes.dialogs.TextFind;
 import classes.dialogs.About;
@@ -14,11 +18,12 @@ import classes.dialogs.PrintDialog;
 import classes.frames.TextEditor;
 import interfaces.Constants;
 import interfaces.FmConstants;
+import interfaces.FtaConstants;
 import interfaces.MenuVals;
 import interfaces.PopupVals;
 
 //Click events for Text Editor window
-public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constants{
+public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constants,FtaConstants{
 	
 	private TextEditor te;
 	
@@ -96,6 +101,29 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		}
 		else if(cmd == Menu.mEdit.FIND_PRE.toString()) {
 			//Edit -> Find Previous
+			JTextArea jta_content = this.te.textarea;
+			String search = this.te.searchString;
+			Map<String, Object>options = Map.ofEntries(
+					new AbstractMap.SimpleEntry<String,Object>("caseInsensitive",this.te.caseInsensitive),
+					new AbstractMap.SimpleEntry<String,Object>("downSelected",false)
+					);
+			try {
+				FindTextActions fta = new FindTextActions(jta_content,search,options);
+				boolean searched = fta.checkSearch();
+				if(searched) {
+					//Search string found in JTextArea box
+					this.te.textarea = fta.getJtaContent();
+				}//if(searched) {
+				else {
+					byte errno = fta.getErrno();
+					if(errno == FTA_SEARCHNOTFOUND)
+						JOptionPane.showMessageDialog(this.te, "Impossibile trovare '"+search+"'",TF_JOP1_TITLE,JOptionPane.WARNING_MESSAGE);	
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				JOptionPane.showMessageDialog(this.te, e1.getMessage());
+			}	
 		}
 		else if(cmd == Menu.mEdit.FIND_NEXT.toString()) {
 			//Edit -> Find Next

@@ -37,7 +37,9 @@ public class TfClickEvent implements ActionListener,Constants,FtaConstants{
 		if(fired.equals(this.tf.jb_findNext)) {
 			JTextArea jta_content = this.te.textarea;
 			String search = this.tf.jt_field.getText();
+			this.te.searchString = search;
 			boolean caseInsensitive = this.tf.jc_textCase.isSelected();
+			this.te.caseInsensitive = caseInsensitive;
 			boolean downSelected = this.tf.jr_down.isSelected();
 			//Immutable Map
 			Map<String, Object>options = Map.ofEntries(
