@@ -66,6 +66,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 				JMenuItem miCopy = new JMenuItem(Menu.mEdit.COPY.toString());
 				JMenuItem miPaste = new JMenuItem(Menu.mEdit.PASTE.toString());
 				JMenuItem miFind = new JMenuItem(Menu.mEdit.FIND.toString());
+				JMenuItem miFindPre = new JMenuItem(Menu.mEdit.FIND_PRE.toString());
 				JMenuItem miFindNext = new JMenuItem(Menu.mEdit.FIND_NEXT.toString());
 				JMenuItem miSelectAll = new JMenuItem(Menu.mEdit.SELECT_ALL.toString());
 				miCut.addActionListener(new TeClickEvent(this));
@@ -78,6 +79,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 			mEdit.add(miPaste);
 			mEdit.addSeparator();
 			mEdit.add(miFind);
+			mEdit.add(miFindPre);
 			mEdit.add(miFindNext);
 			mEdit.addSeparator();
 			mEdit.add(miSelectAll);

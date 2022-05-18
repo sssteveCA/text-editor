@@ -31,6 +31,7 @@ public interface MenuVals {
 			COPY("Copia"),
 			PASTE("Incolla"),
 			FIND("Trova"),
+			FIND_PRE("Trova precedente"),
 			FIND_NEXT("Trova successivo"),
 			SELECT_ALL("Seleziona tutto");
 			
