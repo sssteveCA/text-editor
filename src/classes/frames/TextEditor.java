@@ -22,6 +22,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	private String title; //title of the window
 	
 	
+	public JMenuItem miAutoWrap; //Needed for change the label on click
 	public JTextArea textarea;
 	//Right click 'Edit' popup menu
 	public final JPopupMenu pm_edit = new JPopupMenu(TE_PM1);
@@ -91,9 +92,9 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 			mEdit.add(miSelectAll);
 		mb.add(mEdit);
 			JMenu mFormat = new JMenu(Menu.FORMAT.toString());
-				JMenuItem miAutoWrap = new JMenuItem(Menu.mFormat.AUTO_WRAP.toString());
+				this.miAutoWrap = new JMenuItem(Menu.mFormat.AUTO_WRAP.toString());
 				JMenuItem miFont = new JMenuItem(Menu.mFormat.FONT.toString());
-				miAutoWrap.addActionListener(new TeClickEvent(this));
+				this.miAutoWrap.addActionListener(new TeClickEvent(this));
 				miFont.addActionListener(new TeClickEvent(this));
 			mFormat.add(miAutoWrap);
 			mFormat.add(miFont);
