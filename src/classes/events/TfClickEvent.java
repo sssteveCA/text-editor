@@ -39,7 +39,8 @@ public class TfClickEvent implements ActionListener,Constants,FtaConstants{
 			String search = this.tf.jt_field.getText();
 			boolean caseInsensitive = this.tf.jc_textCase.isSelected();
 			boolean downSelected = this.tf.jr_down.isSelected();
-			HashMap<String, Object>options = (HashMap<String, Object>) Map.ofEntries(
+			//Immutable Map
+			Map<String, Object>options = Map.ofEntries(
 					new AbstractMap.SimpleEntry<String, Object>("caseInsensitive",(boolean)caseInsensitive),
 					new AbstractMap.SimpleEntry<String,Object>("downSelected",downSelected)
 					);

@@ -2,6 +2,7 @@ package classes;
 
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JTextArea;
 import javax.swing.text.BadLocationException;
@@ -16,25 +17,26 @@ import interfaces.FtaConstants;
 public class FindTextActions implements FtaConstants{
 	
 	private JTextArea jta_content; //JTextArea box that contains text for search
-	private HashMap<String, Object> options; 
+	private Map<String, Object> options; 
 	private String search; //String to search in JTextArea
 	private String content; //JTextArea string content
 	private byte errno; //error code
 	private String error; //error message
 	
-	public FindTextActions(JTextArea jta_content, String search, HashMap<String, Object> options) throws Exception {
+	public FindTextActions(JTextArea jta_content, String search, Map<String, Object> options) throws Exception {
 		if(jta_content == null)throw new Exception(Exceptions.JTA_NULL.toString());
 		this.jta_content = jta_content;
 		if(search == null)throw new Exception(Exceptions.SEARCH_NULL.toString());
 		this.search = search;
 		this.content = this.jta_content.getText();
-		this.setHashmap(options);
+		this.setMap(options);
 		this.errno = 0;
 		this.error = null;
 		
 	}
 	
 	public JTextArea getJtaContent() {return this.jta_content;}
+	public Map getOptions() {return this.options;}
 	public String getSearch() {return this.search;}
 	public String getContent() {return this.content;}
 	public byte getErrno() {return this.errno;}
@@ -50,10 +52,11 @@ public class FindTextActions implements FtaConstants{
 		return this.error;
 	}
 	
-	//Set HashMap property values
-	private void setHashmap(HashMap<String, Object> options) {
-		if(options == null)options = new HashMap<String, Object>();
-		this.options = new HashMap<String, Object>();
+	//Set Map property values
+	private void setMap(Map<String, Object> options) {
+		if(options == null)options = Map.ofEntries();
+		//Mutable Map
+		this.options = new HashMap<String,Object>();
 		if(options.containsKey("caseInsensitive"))
 			this.options.put("caseInsensitive",options.get("caseInsensitive"));
 		else
