@@ -122,6 +122,7 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 			else wordWrap = false;
 			this.te.textarea.setLineWrap(lineWrap);
 			this.te.textarea.setWrapStyleWord(wordWrap);
+			boolean enabled = (lineWrap && wordWrap); //True if text wrap is enabled
 		}
 		else if(cmd == Menu.mFormat.FONT.toString()) {
 			//Format -> Font

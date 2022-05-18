@@ -1,8 +1,12 @@
 package classes.common;
 
+import java.awt.Component;
 import java.awt.Font;
 import java.util.List;
 
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.ListModel;
 
 import interfaces.FcLists;
@@ -63,6 +67,31 @@ public class Functions implements FcLists {
 			}
 		}
 		return index;
+	}
+	
+	//Get menu item by String label
+	public static JMenuItem getMenuItem(JMenuBar jmBar,String label) {
+		JMenuItem item = null;
+		//Get number of JMenu in JMenuBar
+		int jMenuCount = jmBar.getMenuCount();
+		for(int i = 0; i < jMenuCount; i++) {
+			//JMenu item child of JMenuBar
+			JMenu jMenu = jmBar.getMenu(i);
+			//Numbers of jMenuItem in jMenu object
+			int jMenuItemCount = jMenu.getMenuComponentCount();
+			for(int j = 0; j < jMenuItemCount; j++) {
+				//JMenu children
+				Component comp = jMenu.getMenuComponent(j);
+				if(comp instanceof JMenuItem) {
+					item = (JMenuItem) comp;
+					if(item.getText().equals(label)) {
+						//Found a JMenuItem with label param
+						return item;
+					}
+				}//if(comp instanceof JMenuItem) {
+			}//for(int j = 0; j < jMenuItemCount; j++) {
+		}//for(int i = 0; i < jMenuCount; i++) {
+		return item;
 	}
 
 }
