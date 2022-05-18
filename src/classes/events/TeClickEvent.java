@@ -101,32 +101,11 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		}
 		else if(cmd == Menu.mEdit.FIND_PRE.toString()) {
 			//Edit -> Find Previous
-			JTextArea jta_content = this.te.textarea;
-			String search = this.te.searchString;
-			Map<String, Object>options = Map.ofEntries(
-					new AbstractMap.SimpleEntry<String,Object>("caseInsensitive",this.te.caseInsensitive),
-					new AbstractMap.SimpleEntry<String,Object>("downSelected",false)
-					);
-			try {
-				FindTextActions fta = new FindTextActions(jta_content,search,options);
-				boolean searched = fta.checkSearch();
-				if(searched) {
-					//Search string found in JTextArea box
-					this.te.textarea = fta.getJtaContent();
-				}//if(searched) {
-				else {
-					byte errno = fta.getErrno();
-					if(errno == FTA_SEARCHNOTFOUND)
-						JOptionPane.showMessageDialog(this.te, "Impossibile trovare '"+search+"'",TF_JOP1_TITLE,JOptionPane.WARNING_MESSAGE);	
-				}
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-				JOptionPane.showMessageDialog(this.te, e1.getMessage());
-			}	
+			this.findTextItemsAction(false);
 		}
 		else if(cmd == Menu.mEdit.FIND_NEXT.toString()) {
 			//Edit -> Find Next
+			this.findTextItemsAction(true);
 		}
 		else if(cmd == Menu.mEdit.SELECT_ALL.toString()) {
 			//Edit -> Select All
@@ -186,6 +165,33 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		else {
 		}
 		
+	}
+	
+	//Executed when user click on Find Next or Find Pre menu items
+	private void findTextItemsAction(boolean downSelected) {
+		JTextArea jta_content = this.te.textarea;
+		String search = this.te.searchString;
+		Map<String, Object>options = Map.ofEntries(
+				new AbstractMap.SimpleEntry<String,Object>("caseInsensitive",this.te.caseInsensitive),
+				new AbstractMap.SimpleEntry<String,Object>("downSelected",downSelected)
+				);
+		try {
+			FindTextActions fta = new FindTextActions(jta_content,search,options);
+			boolean searched = fta.checkSearch();
+			if(searched) {
+				//Search string found in JTextArea box
+				this.te.textarea = fta.getJtaContent();
+			}//if(searched) {
+			else {
+				byte errno = fta.getErrno();
+				if(errno == FTA_SEARCHNOTFOUND)
+					JOptionPane.showMessageDialog(this.te, "Impossibile trovare '"+search+"'",TF_JOP1_TITLE,JOptionPane.WARNING_MESSAGE);	
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(this.te, e1.getMessage());
+		}	
 	}
 	
 }

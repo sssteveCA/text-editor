@@ -74,11 +74,11 @@ public class FindTextActions implements FtaConstants{
 		this.jta_content.requestFocus();
 		//get JTextArea mark position
 		int markPos = this.jta_content.getCaretPosition();
-		int index = -1;
 		//Check if search direction is downward
 		boolean downSelected = (boolean) this.options.get("downSelected");
 		//Check if the search must be case insentive
 		boolean caseInsensitive = (boolean) this.options.get("caseInsensitive");
+		int index = -1;
 		if(downSelected) {
 			//check if search is case Sensitive
 			if(!caseInsensitive) {
