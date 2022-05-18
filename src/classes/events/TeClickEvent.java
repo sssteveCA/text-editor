@@ -94,6 +94,9 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 			//Edit -> Find
 			TextFind tf = new TextFind(this.te,DLG_TEXTFIND_TITLE);
 		}
+		else if(cmd == Menu.mEdit.FIND_PRE.toString()) {
+			//Edit -> Find Previous
+		}
 		else if(cmd == Menu.mEdit.FIND_NEXT.toString()) {
 			//Edit -> Find Next
 		}
