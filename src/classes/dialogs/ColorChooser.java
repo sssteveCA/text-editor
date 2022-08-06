@@ -9,8 +9,9 @@ import javax.swing.JPanel;
 
 import classes.events.CcClickEvent;
 import classes.frames.TextEditor;
+import interfaces.Constants;
 
-public class ColorChooser{
+public class ColorChooser implements Constants{
 	
 	private TextEditor te;
 	private JColorChooser jcc;
@@ -24,8 +25,8 @@ public class ColorChooser{
 	public void setDialog(TextEditor te) {
 		this.jcc = new JColorChooser();
 		this.jcc.setColor(Color.BLACK);
-		CcClickEvent cce = new CcClickEvent(te);
-		this.colorDialog = JColorChooser.createDialog(te, "Scegli un colore", true, jcc, cce, cce);
+		CcClickEvent cce = new CcClickEvent(te,this.jcc);
+		this.colorDialog = JColorChooser.createDialog(te, CC_DIALOG_TITLE, true, jcc, cce, cce);
 		this.colorDialog.setVisible(true);
 	}
 }

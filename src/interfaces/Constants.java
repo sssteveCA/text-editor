@@ -30,6 +30,9 @@ public interface Constants {
 	//JLabel
 	String AB_TA1 = "Text Editor è un programma gratuito, scritto in Java che si comporta in maniera simile al Blocco Note";
 	
+	//Color Chooser dialog
+	String CC_DIALOG_TITLE = "Scegli un colore";
+	
 	//Dialog box
 	String DLG_ABOUT_TITLE = "Informazioni su Text Editor";
 	String DLG_EXIT_TITLE = "Chiudi il programma";
