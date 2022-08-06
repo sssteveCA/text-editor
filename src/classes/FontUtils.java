@@ -47,11 +47,10 @@ public class FontUtils {
 	}
 	
 	//Get the relative font size (%)
-	public int getFontRelativeSize() {
-		int size = this.font.getSize();
-		int relativeSize = Math.round(size/FontUtils.DEFAULT_SIZE);
+	public static int getFontRelativeSize(Font font, int defaultSize) {
+		int fontSize = font.getSize();
+		double relativeSizeDecimal = (double)fontSize / defaultSize;
+		int relativeSize = (int)(relativeSizeDecimal * 100);
 		return relativeSize;
 	}
-	
-	
 }

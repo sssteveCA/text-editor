@@ -41,6 +41,9 @@ public interface Constants {
 	//Errors
 	String ERR_UNKNOWN = "Errore sconosciuto";
 	
+	//Font
+	int FONT_DEFAULT_SIZE = 12;
+	
 	//Font Chooser dialog number constants
 	//int FC_WINDOW_HEIGHT = 450;
 	int FC_WINDOW_HEIGHT = 500;

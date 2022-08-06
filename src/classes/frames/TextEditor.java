@@ -22,6 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
+import classes.FontUtils;
 import classes.common.Functions;
 import classes.events.TeCaretEvent;
 import classes.events.TeClickEvent;
@@ -205,7 +206,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		int column = Functions.getCaretColumn(this.textarea);
 		this.statusBarLabels.get(TE_JLAB_JP1_CARETPOSITION).setText("Linea "+row+", colonna "+column);
 		Font font = this.textarea.getFont();
-		int zoom = font.getSize();
+		int zoom = FontUtils.getFontRelativeSize(font, FONT_DEFAULT_SIZE);
 		this.statusBarLabels.get(TE_JLAB_JP1_ZOOM).setText(zoom+"%");
 		String cr = System.lineSeparator();
 		this.statusBarLabels.get(TE_JLAB_JP1_CARRIAGERETURN).setText(cr);

@@ -214,7 +214,6 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 	private void statusBarAction() {
 		//Check if status bar is visible or not
 		boolean visible = this.te.statusBar.isVisible();
-		System.out.println("TeClickEvent statusBar visible => "+visible);
 		if(visible) {
 			this.te.statusBar.setVisible(false);
 			this.te.miStatusBar.setText(Menu.mView.STATUS_BAR.toString());
