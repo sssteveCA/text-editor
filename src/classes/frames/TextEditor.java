@@ -3,6 +3,8 @@ package classes.frames;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 
 import javax.swing.BorderFactory;
@@ -20,6 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
+import classes.common.Functions;
 import classes.events.TeCaretEvent;
 import classes.events.TeClickEvent;
 import classes.events.TeMouseEvent;
@@ -54,7 +57,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		//this.add(this.textarea);
 		this.add(jsp_text);
 		this.setJMenuBar(this.menu());
-		//this.setStatusBar(false);
+		this.setStatusBar(false);
 		this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -170,7 +173,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	 * cr - carriage return type
 	 * charset - charset encoding
 	 * */
-	private boolean setStatusBar(boolean visible,int row, int column,int zoom,String cr,String charset) {
+	private boolean setStatusBar(boolean visible) {
 		if(this.statusBar == null)
 			this.statusBar = new JPanel();
 		this.statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
@@ -181,9 +184,15 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 			this.statusBarLabels = new HashMap<String, JLabel>();
 		}
 		this.statusBarLabels.put(TE_JLAB_JP1_VOID, new JLabel(""));
+		int row = Functions.getCaretRow(this.textarea);
+		int column = Functions.getCaretColumn(this.textarea);
 		this.statusBarLabels.put(TE_JLAB_JP1_CARETPOSITION, new JLabel("Linea "+row+", colonna "+column));
+		Font font = this.textarea.getFont();
+		int zoom = font.getSize();
 		this.statusBarLabels.put(TE_JLAB_JP1_ZOOM, new JLabel(zoom+"%"));
+		String cr = System.lineSeparator();
 		this.statusBarLabels.put(TE_JLAB_JP1_CARRIAGERETURN, new JLabel(cr));
+		String charset = Charset.defaultCharset().name();
 		this.statusBarLabels.put(TE_JLAB_JP1_CHARSET,new JLabel(charset));
 		int statusBarLength = this.statusBar.getComponentCount();
 		if(statusBarLength <= 0) {
