@@ -194,7 +194,6 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		//Add Jlabels to container with loop
 		this.statusBarLabels.forEach((key, value) -> {
 			value.setSize(new Dimension(this.statusBar.getWidth() / 5, this.statusBar.getHeight()));
-			System.out.println(key);
 			this.statusBar.add(value);
 			this.statusBar.add(Box.createGlue());
 		});
@@ -211,7 +210,8 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		Font font = this.textarea.getFont();
 		int zoom = FontUtils.getFontRelativeSize(font, FONT_DEFAULT_SIZE);
 		this.statusBarLabels.get(TE_JLAB_JP1_ZOOM).setText(zoom+"%");
-		String cr = System.lineSeparator();
+		String cr = "\\"+System.getProperty("line.separator");
+		System.out.println("setStatusBarLabels cr => "+cr);
 		this.statusBarLabels.get(TE_JLAB_JP1_CARRIAGERETURN).setText(cr);
 		String charset = Charset.defaultCharset().name();
 		this.statusBarLabels.get(TE_JLAB_JP1_CHARSET).setText(charset);
