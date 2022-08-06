@@ -137,7 +137,7 @@ public interface Constants {
 	//Text Editor window number constants
 	int TE_WINDOW_HEIGHT = 600;
 	int TE_WINDOW_WIDTH = 600;
-	//Jpanel
+	//JPanel
 	int TE_JP1_HEIGHT = 24;
 	
 	//TextEditor window string constants
@@ -148,6 +148,8 @@ public interface Constants {
 	String TE_JLAB_JP1_ZOOM = "zoom";
 	String TE_JLAB_JP1_CARRIAGERETURN = "carriageReturn";
 	String TE_JLAB_JP1_CHARSET = "charset";
+	//Text Editor window string constants
+	String TE_WINDOW_NAME = "TextEditor";
 	
 	//Text Find dialog number constants
 	int TF_WINDOW_HEIGHT = 200;
@@ -213,7 +215,6 @@ public interface Constants {
 	//JRadioButton
 	String TF_RB1 = "Su";
 	String TF_RB2 = "Giù";
-	//Text Editor window string constants
-	String TE_WINDOW_NAME = "TextEditor";
+	
 	
 }

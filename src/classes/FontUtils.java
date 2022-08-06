@@ -27,6 +27,7 @@ public class FontUtils {
 	}
 	
 	public float getSize() {return this.size;}
+	public Font getFont() {return this.font;}
 	
 	//Change font size. If operation = 0 decrease, else increase
 	public void changeSize(byte op) {
@@ -42,6 +43,14 @@ public class FontUtils {
 		}
 		else this.size = FontUtils.DEFAULT_SIZE;
 		this.te.textarea.setFont(this.font.deriveFont(this.size));
+		this.font = this.te.textarea.getFont();
+	}
+	
+	//Get the relative font size (%)
+	public int getFontRelativeSize() {
+		int size = this.font.getSize();
+		int relativeSize = Math.round(size/FontUtils.DEFAULT_SIZE);
+		return relativeSize;
 	}
 	
 	

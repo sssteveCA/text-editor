@@ -124,16 +124,19 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 			//View -> Zoom -> Zoom In
 			FontUtils fu = new FontUtils(this.te);
 			fu.changeSize(FontUtils.ACTION_INCREASE);
+			this.te.setStatusBarLabels();
 		}
 		else if(cmd.equals(Menu.mView.mZoom.ZOOM_OUT.toString())) {
 			//View -> Zoom -> Zoom out
 			FontUtils fu = new FontUtils(this.te);
 			fu.changeSize(FontUtils.ACTION_DECREASE);
+			this.te.setStatusBarLabels();
 		}
 		else if(cmd.equals(Menu.mView.mZoom.DEFAULT_ZOOM.toString())) {
 			//View -> Zoom -> Default zoom
 			FontUtils fu = new FontUtils(this.te);
 			fu.changeSize(FontUtils.ACTION_DEFAULTSIZE);
+			this.te.setStatusBarLabels();
 		}
 		else if(cmd.equals(Menu.mAbout.ABOUT_TE.toString())) {
 			//? -> About Text Editor

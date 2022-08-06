@@ -23,9 +23,9 @@ public class TeCaretEvent implements CaretListener {
 			int end = this.te.textarea.getSelectionEnd();
 			if(end > start) {
 				//Text selected
-				System.out.println("Inizio selezione => "+this.te.textarea.getSelectionStart());
-				System.out.println("Fine selezione => "+this.te.textarea.getSelectionEnd());
-				System.out.println("Testo selezionato => "+this.te.textarea.getSelectedText());
+//				System.out.println("Inizio selezione => "+this.te.textarea.getSelectionStart());
+//				System.out.println("Fine selezione => "+this.te.textarea.getSelectionEnd());
+//				System.out.println("Testo selezionato => "+this.te.textarea.getSelectedText());
 			}	
 		}//if(fired.equals(this.te.textarea)) {
 		this.te.setStatusBarLabels();
