@@ -118,6 +118,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 				JMenuItem miColor = new JMenuItem(Menu.mFormat.COLOR.toString());
 				this.miAutoWrap.addActionListener(new TeClickEvent(this));
 				miFont.addActionListener(new TeClickEvent(this));
+				miColor.addActionListener(new TeClickEvent(this));
 			mFormat.add(this.miAutoWrap);
 			mFormat.add(miFont);
 			mFormat.addSeparator();
@@ -214,7 +215,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		int zoom = FontUtils.getFontRelativeSize(font, FONT_DEFAULT_SIZE);
 		this.statusBarLabels.get(TE_JLAB_JP1_ZOOM).setText(zoom+"%");
 		String cr = Functions.getCurrentLineSeparator();
-		System.out.println("setStatusBarLabels cr => "+cr);
+		//System.out.println("setStatusBarLabels cr => "+cr);
 		this.statusBarLabels.get(TE_JLAB_JP1_CARRIAGERETURN).setText(cr);
 		String charset = Charset.defaultCharset().name();
 		this.statusBarLabels.get(TE_JLAB_JP1_CHARSET).setText(charset);

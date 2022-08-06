@@ -13,6 +13,7 @@ import classes.FindTextActions;
 import classes.FontUtils;
 import classes.dialogs.TextFind;
 import classes.dialogs.About;
+import classes.dialogs.ColorChooser;
 import classes.dialogs.MyFontChooser;
 import classes.dialogs.PrintDialog;
 import classes.frames.TextEditor;
@@ -119,6 +120,11 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		else if(cmd.equals(Menu.mFormat.FONT.toString())) {
 			//Format -> Font
 			MyFontChooser mfc = new MyFontChooser(this.te,DLG_FONTCHOOSER_TITLE,true);
+		}
+		else if(cmd.equals(Menu.mFormat.COLOR.toString())) {
+			//Format -> Color
+			System.out.println("Colore");
+			ColorChooser cc = new ColorChooser(this.te);
 		}
 		else if(cmd.equals(Menu.mView.mZoom.ZOOM_IN.toString())) {
 			//View -> Zoom -> Zoom In
