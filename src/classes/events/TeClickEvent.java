@@ -114,17 +114,7 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		else if(cmd.equals(Menu.mFormat.AUTO_WRAP.toString()) || cmd.equals(Menu.mFormat.AUTO_WRAP.toString()+" => ON")) {
 			//Format -> Auto Wrap
 			//enable word wrap if is disabled and viceversa
-			boolean lineWrap = this.te.textarea.getLineWrap();
-			boolean wordWrap = this.te.textarea.getWrapStyleWord();
-			if(!lineWrap)lineWrap = true;
-			else lineWrap = false;
-			if(!wordWrap) wordWrap = true;
-			else wordWrap = false;
-			this.te.textarea.setLineWrap(lineWrap);
-			this.te.textarea.setWrapStyleWord(wordWrap);
-			boolean enabled = (lineWrap && wordWrap); //True if text wrap is enabled
-			if(enabled)this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString()+" => ON");
-			else this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString());
+			this.autoWrapAction();
 		}//else if(cmd.equals(Menu.mFormat.AUTO_WRAP.toString()) || cmd.equals("V "+Menu.mFormat.AUTO_WRAP.toString())) {
 		else if(cmd == Menu.mFormat.FONT.toString()) {
 			//Format -> Font
@@ -165,12 +155,32 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 			//Right click -> Select All
 			this.te.textarea.selectAll();
 		}
+		else if(cmd == Menu.mView.STATUS_BAR.toString()) {
+			//View -> Status Bar
+			
+		}
 		else {
 		}
 		
 	}
 	
-	//Executed when user click on Find Next or Find Pre menu items
+	//Executed when user clicks on Format -> Auto Wrap
+	private void autoWrapAction() {
+		//enable word wrap if is disabled and viceversa
+		boolean lineWrap = this.te.textarea.getLineWrap();
+		boolean wordWrap = this.te.textarea.getWrapStyleWord();
+		if(!lineWrap)lineWrap = true;
+		else lineWrap = false;
+		if(!wordWrap) wordWrap = true;
+		else wordWrap = false;
+		this.te.textarea.setLineWrap(lineWrap);
+		this.te.textarea.setWrapStyleWord(wordWrap);
+		boolean enabled = (lineWrap && wordWrap); //True if text wrap is enabled
+		if(enabled)this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString()+" => ON");
+		else this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString());
+	}
+	
+	//Executed when user clicks on Find Next or Find Pre menu items
 	private void findTextItemsAction(boolean downSelected) {
 		JTextArea jta_content = this.te.textarea;
 		String search = this.te.searchString;
@@ -197,4 +207,8 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		}	
 	}
 	
+	//Executed when user clicks in View -> Status Bar
+	private void statusBarAction() {
+		
+	}
 }
