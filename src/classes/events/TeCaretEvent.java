@@ -28,6 +28,8 @@ public class TeCaretEvent implements CaretListener {
 				System.out.println("Testo selezionato => "+this.te.textarea.getSelectedText());
 			}	
 		}//if(fired.equals(this.te.textarea)) {
+		boolean visible = this.te.statusBar.isVisible();
+		this.te.setStatusBar(visible);
 	}
 
 }
