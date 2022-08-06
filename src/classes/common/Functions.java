@@ -82,6 +82,17 @@ public class Functions implements FcLists {
 		return row;
 	}
 	
+	//Get current line separator name
+	public static String getCurrentLineSeparator() {
+		String separatorName = "Windows ";
+		String separator = System.getProperty("line.separator");
+		if(separator.equals("\r\n"))
+			separatorName +=  "(CRLF)";
+		else
+			separatorName += "(LF)";
+		return separatorName;
+	}
+	
 	//Get the index position of specified value in ListModel<Byte>
 	public static int getIndexByByte(ListModel<Byte> listModel, Byte value) {
 		int index = -1; //-1 if value not found

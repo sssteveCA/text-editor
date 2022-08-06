@@ -210,7 +210,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		Font font = this.textarea.getFont();
 		int zoom = FontUtils.getFontRelativeSize(font, FONT_DEFAULT_SIZE);
 		this.statusBarLabels.get(TE_JLAB_JP1_ZOOM).setText(zoom+"%");
-		String cr = "\\"+System.getProperty("line.separator");
+		String cr = Functions.getCurrentLineSeparator();
 		System.out.println("setStatusBarLabels cr => "+cr);
 		this.statusBarLabels.get(TE_JLAB_JP1_CARRIAGERETURN).setText(cr);
 		String charset = Charset.defaultCharset().name();
