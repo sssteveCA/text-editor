@@ -79,6 +79,7 @@ public class FcClickEvent implements ActionListener,FcLists{
 		}
 		font = new Font(fName,fStyle,fSize);
 		this.te.textarea.setFont(font);
+		this.te.setStatusBarLabels();
 	}
 
 }
