@@ -137,6 +137,8 @@ public interface Constants {
 	//Text Editor window number constants
 	int TE_WINDOW_HEIGHT = 600;
 	int TE_WINDOW_WIDTH = 600;
+	//Jpanel
+	int TE_JP1_HEIGHT = 16;
 	
 	//TextEditor window string constants
 	String TE_PM1 = "Modifica"; //Name of popup menu

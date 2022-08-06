@@ -1,12 +1,18 @@
 package classes.frames;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.BevelBorder;
 
 import classes.events.TeCaretEvent;
 import classes.events.TeClickEvent;
@@ -23,6 +29,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	
 	
 	public JMenuItem miAutoWrap; //Needed for change the label on click
+	public JPanel statusBar; //This panel appears at the bottom of the window when user clicks on statusBar menu item
 	public JTextArea textarea;
 	//Right click 'Edit' popup menu
 	public final JPopupMenu pm_edit = new JPopupMenu(TE_PM1);
@@ -39,6 +46,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		//this.add(this.textarea);
 		this.add(jsp_text);
 		this.setJMenuBar(this.menu());
+		this.createStatusBar();
 		this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -143,5 +151,15 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 			str+=line+"\n";
 		}
 		return str;
+	}
+	
+	//Create the status bar JPanel
+	private boolean createStatusBar() {
+		this.statusBar = new JPanel();
+		this.statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
+		this.add(this.statusBar,BorderLayout.SOUTH);
+		this.statusBar.setPreferredSize(new Dimension(this.getWidth(),TE_JP1_HEIGHT));
+		this.statusBar.setLayout(new BoxLayout(this.statusBar,BoxLayout.X_AXIS));
+		return true;
 	}
 }
