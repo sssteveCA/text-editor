@@ -115,10 +115,13 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 			JMenu mFormat = new JMenu(Menu.FORMAT.toString());
 				this.miAutoWrap = new JMenuItem(Menu.mFormat.AUTO_WRAP.toString());
 				JMenuItem miFont = new JMenuItem(Menu.mFormat.FONT.toString());
+				JMenuItem miColor = new JMenuItem(Menu.mFormat.COLOR.toString());
 				this.miAutoWrap.addActionListener(new TeClickEvent(this));
 				miFont.addActionListener(new TeClickEvent(this));
 			mFormat.add(this.miAutoWrap);
 			mFormat.add(miFont);
+			mFormat.addSeparator();
+			mFormat.add(miColor);
 		mb.add(mFormat);
 			JMenu mView = new JMenu(Menu.VIEW.toString());
 				JMenu mZoom = new JMenu(Menu.mView.ZOOM.toString());

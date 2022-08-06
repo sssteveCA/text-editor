@@ -46,7 +46,8 @@ public interface MenuVals {
 		//Menu -> Format items
 		public enum mFormat{
 			AUTO_WRAP("A capo automatico"),
-			FONT("Carattere...");
+			FONT("Carattere..."),
+			COLOR("Colore");
 			
 			private final String text;
 			
