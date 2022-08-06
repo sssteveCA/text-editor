@@ -7,7 +7,10 @@ import java.util.List;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JTextArea;
 import javax.swing.ListModel;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Utilities;
 
 import interfaces.FcLists;
 
@@ -43,18 +46,54 @@ public class Functions implements FcLists {
 		return styleName;
 	}
 	
-	//Get the index position of specified value in ListModel<Byte>
-		public static int getIndexByByte(ListModel<Byte> listModel, Byte value) {
-			int index = -1; //-1 if value not found
-			for(int i = 0; i < listModel.getSize(); i++) {
-				Byte elem = listModel.getElementAt(i);
-				if(elem.equals(value)) {
-					index = i;
-					break;
-				}
-			}
-			return index;
+	//Get the Caret column number of a JTextArea component
+	public static int getCaretColumn(JTextArea area) {
+		int caretPos = area.getCaretPosition();
+		System.out.println("GetCaretColumn caretPos => "+caretPos);
+		try {
+			int offset = Utilities.getRowStart(area, caretPos);
+			int col = caretPos - offset + 1;
+			System.out.println("GetCaretColumn offset => "+offset);
+			System.out.println("GetCaretColumn col => "+col);
+			return col;
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 1;
 		}
+	}
+	
+	//Get the Caret row number of a JTextArea component
+	public static int getCaretRow(JTextArea area) {
+		int caretPos = area.getCaretPosition();
+		System.out.println("GetCaretRow caretPos => "+caretPos);
+		int row = (caretPos == 0) ? 1 : 0;
+		for(int offset = caretPos; offset > 0; row++) {
+			try {
+				offset = Utilities.getRowStart(area, offset) - 1;
+				System.out.println("GetCaretRow offset => "+offset);
+				System.out.println("GetCaretRow row => "+row);
+			} catch (BadLocationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return 1;
+			}
+		}
+		return row;
+	}
+	
+	//Get the index position of specified value in ListModel<Byte>
+	public static int getIndexByByte(ListModel<Byte> listModel, Byte value) {
+		int index = -1; //-1 if value not found
+		for(int i = 0; i < listModel.getSize(); i++) {
+			Byte elem = listModel.getElementAt(i);
+			if(elem.equals(value)) {
+				index = i;
+				break;
+			}
+		}
+		return index;
+	}
 	
 	//Get the index position of specified value in ListModel<String>
 	public static int getIndexByString(ListModel<String> listModel, String value) {

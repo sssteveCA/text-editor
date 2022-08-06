@@ -54,7 +54,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		//this.add(this.textarea);
 		this.add(jsp_text);
 		this.setJMenuBar(this.menu());
-		this.setStatusBar(false);
+		//this.setStatusBar(false);
 		this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -162,22 +162,37 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	}
 	
 	//Create/Set the JPanel status bar 
-	private boolean setStatusBar(boolean visible) {
-		this.statusBar = new JPanel();
+	/*
+	 * visible - show/hide the JPanel
+	 * row - row number of the caret in JTextArea
+	 * column - number of the caret in JTextArea
+	 * zoom - zoom level in percentage
+	 * cr - carriage return type
+	 * charset - charset encoding
+	 * */
+	private boolean setStatusBar(boolean visible,int row, int column,int zoom,String cr,String charset) {
+		if(this.statusBar == null)
+			this.statusBar = new JPanel();
 		this.statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
 		this.add(this.statusBar,BorderLayout.SOUTH);
 		this.statusBar.setPreferredSize(new Dimension(this.getWidth(),TE_JP1_HEIGHT));
 		this.statusBar.setLayout(new BoxLayout(this.statusBar,BoxLayout.X_AXIS));
-		this.statusBarLabels = new HashMap<String, JLabel>();
-		this.statusBarLabels.put(TE_JLAB_JP1_VOID, new JLabel("hfhgfhgf"));
-		this.statusBarLabels.put(TE_JLAB_JP1_CARETPOSITION, new JLabel("fhgfhgfh"));
-		this.statusBarLabels.put(TE_JLAB_JP1_ZOOM, new JLabel("jhjhgjhf"));
-		this.statusBarLabels.put(TE_JLAB_JP1_CARRIAGERETURN, new JLabel("fhgfghf"));
-		this.statusBarLabels.put(TE_JLAB_JP1_CHARSET,new JLabel("hhjfghf"));
-		this.statusBarLabels.forEach((key, value) -> {
-			this.statusBar.add(value);
-			this.statusBar.add(Box.createGlue());
-		});
+		if(this.statusBarLabels == null) {
+			this.statusBarLabels = new HashMap<String, JLabel>();
+		}
+		this.statusBarLabels.put(TE_JLAB_JP1_VOID, new JLabel(""));
+		this.statusBarLabels.put(TE_JLAB_JP1_CARETPOSITION, new JLabel("Linea "+row+", colonna "+column));
+		this.statusBarLabels.put(TE_JLAB_JP1_ZOOM, new JLabel(zoom+"%"));
+		this.statusBarLabels.put(TE_JLAB_JP1_CARRIAGERETURN, new JLabel(cr));
+		this.statusBarLabels.put(TE_JLAB_JP1_CHARSET,new JLabel(charset));
+		int statusBarLength = this.statusBar.getComponentCount();
+		if(statusBarLength <= 0) {
+			this.statusBarLabels.forEach((key, value) -> {
+				this.statusBar.add(value);
+				this.statusBar.add(Box.createGlue());
+			});
+		}//if(statusBarLength <= 0) {
+		
 		this.statusBar.setVisible(visible);
 //		boolean visible = this.statusBar.isVisible();
 //		System.out.println("statusBar visible => "+visible);
