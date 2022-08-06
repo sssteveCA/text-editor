@@ -2,9 +2,11 @@ package classes.frames;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.HashMap;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -31,6 +33,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	public JMenuItem miAutoWrap; //Needed for change the label on click
 	public JMenuItem miStatusBar; //Needed for change the label on click
 	public JPanel statusBar; //This panel appears at the bottom of the window when user clicks on statusBar menu item
+	public HashMap<String, JLabel> statusBarLabels;
 	public JTextArea textarea;
 	//Right click 'Edit' popup menu
 	public final JPopupMenu pm_edit = new JPopupMenu(TE_PM1);
@@ -47,7 +50,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		//this.add(this.textarea);
 		this.add(jsp_text);
 		this.setJMenuBar(this.menu());
-		this.createStatusBar();
+		this.setStatusBar(false);
 		this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -154,14 +157,20 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		return str;
 	}
 	
-	//Create the status bar JPanel
-	private boolean createStatusBar() {
+	//Create/Set the JPanel status bar 
+	private boolean setStatusBar(boolean visible) {
 		this.statusBar = new JPanel();
 		this.statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
 		this.add(this.statusBar,BorderLayout.SOUTH);
 		this.statusBar.setPreferredSize(new Dimension(this.getWidth(),TE_JP1_HEIGHT));
 		this.statusBar.setLayout(new BoxLayout(this.statusBar,BoxLayout.X_AXIS));
-		this.statusBar.setVisible(false);
+		this.statusBarLabels = new HashMap<String, JLabel>();
+		this.statusBarLabels.put(TE_JLAB_JP1_VOID, new JLabel());
+		this.statusBarLabels.put(TE_JLAB_JP1_CARETPOSITION, new JLabel());
+		this.statusBarLabels.put(TE_JLAB_JP1_ZOOM, new JLabel());
+		this.statusBarLabels.put(TE_JLAB_JP1_CARRIAGERETURN, new JLabel());
+		this.statusBarLabels.put(TE_JLAB_JP1_CHARSET,new JLabel());
+		this.statusBar.setVisible(visible);
 //		boolean visible = this.statusBar.isVisible();
 //		System.out.println("statusBar visible => "+visible);
 		return true;

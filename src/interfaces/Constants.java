@@ -142,6 +142,12 @@ public interface Constants {
 	
 	//TextEditor window string constants
 	String TE_PM1 = "Modifica"; //Name of popup menu
+	//JLabel of JPanel status bar keys
+	String TE_JLAB_JP1_VOID = "void";
+	String TE_JLAB_JP1_CARETPOSITION = "caretPosition";
+	String TE_JLAB_JP1_ZOOM = "zoom";
+	String TE_JLAB_JP1_CARRIAGERETURN = "carriageReturn";
+	String TE_JLAB_JP1_CHARSET = "charset";
 	
 	//Text Find dialog number constants
 	int TF_WINDOW_HEIGHT = 200;
@@ -190,7 +196,6 @@ public interface Constants {
 	int TF_TFIELD1_WIDTH = 230;
 	int TF_TFIELD1_X = 80;
 	int TF_TFIELD1_Y = 5;
-	
 	
 	//Text Find dialog string constants
 	//JButton
