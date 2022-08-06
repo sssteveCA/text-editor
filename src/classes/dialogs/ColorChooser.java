@@ -7,6 +7,7 @@ import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
+import classes.events.CcClickEvent;
 import classes.frames.TextEditor;
 
 public class ColorChooser{
@@ -23,8 +24,8 @@ public class ColorChooser{
 	public void setDialog(TextEditor te) {
 		this.jcc = new JColorChooser();
 		this.jcc.setColor(Color.BLACK);
-		this.jcc.getSelectionModel().addChangeListener(null);
-		this.colorDialog = JColorChooser.createDialog(te, "Scegli un colore", true, jcc, null, null);
+		CcClickEvent cce = new CcClickEvent(te);
+		this.colorDialog = JColorChooser.createDialog(te, "Scegli un colore", true, jcc, cce, cce);
 		this.colorDialog.setVisible(true);
 	}
 }
