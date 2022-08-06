@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.nio.charset.Charset;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -41,7 +42,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	public JMenuItem miAutoWrap; //Needed for change the label on click
 	public JMenuItem miStatusBar; //Needed for change the label on click
 	public JPanel statusBar; //This panel appears at the bottom of the window when user clicks on statusBar menu item
-	public HashMap<String, JLabel> statusBarLabels;
+	public LinkedHashMap<String, JLabel> statusBarLabels;
 	public JTextArea textarea;
 	//Right click 'Edit' popup menu
 	public final JPopupMenu pm_edit = new JPopupMenu(TE_PM1);
@@ -177,28 +178,30 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	public void setStatusBar() {
 		if(this.statusBar == null)
 			this.statusBar = new JPanel();
-		this.statusBar.removeAll();
+		//Set status bar style
 		this.statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
 		this.add(this.statusBar,BorderLayout.SOUTH);
 		this.statusBar.setPreferredSize(new Dimension(this.getWidth(),TE_JP1_HEIGHT));
 		this.statusBar.setLayout(new BoxLayout(this.statusBar,BoxLayout.X_AXIS));
-		if(this.statusBarLabels == null) {
-			this.statusBarLabels = new HashMap<String, JLabel>();
-		}
+		//Create HashMap with Jlabels for container
+		this.statusBarLabels = new LinkedHashMap<String, JLabel>();
 		//this.statusBarLabels.clear();
 		this.statusBarLabels.put(TE_JLAB_JP1_VOID, new JLabel(""));
 		this.statusBarLabels.put(TE_JLAB_JP1_CARETPOSITION, new JLabel(""));
 		this.statusBarLabels.put(TE_JLAB_JP1_ZOOM, new JLabel(""));
 		this.statusBarLabels.put(TE_JLAB_JP1_CARRIAGERETURN, new JLabel(""));
 		this.statusBarLabels.put(TE_JLAB_JP1_CHARSET,new JLabel(""));
+		//Add Jlabels to container with loop
 		this.statusBarLabels.forEach((key, value) -> {
+			value.setSize(new Dimension(this.statusBar.getWidth() / 5, this.statusBar.getHeight()));
+			System.out.println(key);
 			this.statusBar.add(value);
 			this.statusBar.add(Box.createGlue());
 		});
+		//Set the text for JLabels
 		this.setStatusBarLabels();
+		//The bar is invible at the beginning
 		this.statusBar.setVisible(false);
-//		boolean visible = this.statusBar.isVisible();
-//		System.out.println("statusBar visible => "+visible);
 	}
 	
 	public void setStatusBarLabels() {
