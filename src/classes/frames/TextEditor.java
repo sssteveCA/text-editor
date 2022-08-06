@@ -1,9 +1,12 @@
 package classes.frames;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.HashMap;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +18,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 
 import classes.events.TeCaretEvent;
 import classes.events.TeClickEvent;
@@ -165,11 +169,15 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		this.statusBar.setPreferredSize(new Dimension(this.getWidth(),TE_JP1_HEIGHT));
 		this.statusBar.setLayout(new BoxLayout(this.statusBar,BoxLayout.X_AXIS));
 		this.statusBarLabels = new HashMap<String, JLabel>();
-		this.statusBarLabels.put(TE_JLAB_JP1_VOID, new JLabel());
-		this.statusBarLabels.put(TE_JLAB_JP1_CARETPOSITION, new JLabel());
-		this.statusBarLabels.put(TE_JLAB_JP1_ZOOM, new JLabel());
-		this.statusBarLabels.put(TE_JLAB_JP1_CARRIAGERETURN, new JLabel());
-		this.statusBarLabels.put(TE_JLAB_JP1_CHARSET,new JLabel());
+		this.statusBarLabels.put(TE_JLAB_JP1_VOID, new JLabel("hfhgfhgf"));
+		this.statusBarLabels.put(TE_JLAB_JP1_CARETPOSITION, new JLabel("fhgfhgfh"));
+		this.statusBarLabels.put(TE_JLAB_JP1_ZOOM, new JLabel("jhjhgjhf"));
+		this.statusBarLabels.put(TE_JLAB_JP1_CARRIAGERETURN, new JLabel("fhgfghf"));
+		this.statusBarLabels.put(TE_JLAB_JP1_CHARSET,new JLabel("hhjfghf"));
+		this.statusBarLabels.forEach((key, value) -> {
+			this.statusBar.add(value);
+			this.statusBar.add(Box.createGlue());
+		});
 		this.statusBar.setVisible(visible);
 //		boolean visible = this.statusBar.isVisible();
 //		System.out.println("statusBar visible => "+visible);
