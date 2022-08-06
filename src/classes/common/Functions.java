@@ -49,12 +49,12 @@ public class Functions implements FcLists {
 	//Get the Caret column number of a JTextArea component
 	public static int getCaretColumn(JTextArea area) {
 		int caretPos = area.getCaretPosition();
-		System.out.println("GetCaretColumn caretPos => "+caretPos);
+		//System.out.println("GetCaretColumn caretPos => "+caretPos);
 		try {
 			int offset = Utilities.getRowStart(area, caretPos);
 			int col = caretPos - offset + 1;
-			System.out.println("GetCaretColumn offset => "+offset);
-			System.out.println("GetCaretColumn col => "+col);
+//			System.out.println("GetCaretColumn offset => "+offset);
+//			System.out.println("GetCaretColumn col => "+col);
 			return col;
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
@@ -66,13 +66,13 @@ public class Functions implements FcLists {
 	//Get the Caret row number of a JTextArea component
 	public static int getCaretRow(JTextArea area) {
 		int caretPos = area.getCaretPosition();
-		System.out.println("GetCaretRow caretPos => "+caretPos);
+		//System.out.println("GetCaretRow caretPos => "+caretPos);
 		int row = (caretPos == 0) ? 1 : 0;
 		for(int offset = caretPos; offset > 0; row++) {
 			try {
 				offset = Utilities.getRowStart(area, offset) - 1;
-				System.out.println("GetCaretRow offset => "+offset);
-				System.out.println("GetCaretRow row => "+row);
+//				System.out.println("GetCaretRow offset => "+offset);
+//				System.out.println("GetCaretRow row => "+row);
 			} catch (BadLocationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

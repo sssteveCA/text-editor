@@ -57,7 +57,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		//this.add(this.textarea);
 		this.add(jsp_text);
 		this.setJMenuBar(this.menu());
-		this.setStatusBar(false);
+		this.setStatusBar();
 		this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -173,7 +173,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	 * cr - carriage return type
 	 * charset - charset encoding
 	 * */
-	public void setStatusBar(boolean visible) {
+	public void setStatusBar() {
 		if(this.statusBar == null)
 			this.statusBar = new JPanel();
 		this.statusBar.removeAll();
@@ -195,7 +195,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 			this.statusBar.add(Box.createGlue());
 		});
 		this.setStatusBarLabels();
-		this.statusBar.setVisible(visible);
+		this.statusBar.setVisible(false);
 //		boolean visible = this.statusBar.isVisible();
 //		System.out.println("statusBar visible => "+visible);
 	}
