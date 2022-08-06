@@ -29,6 +29,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	
 	
 	public JMenuItem miAutoWrap; //Needed for change the label on click
+	public JMenuItem miStatusBar; //Needed for change the label on click
 	public JPanel statusBar; //This panel appears at the bottom of the window when user clicks on statusBar menu item
 	public JTextArea textarea;
 	//Right click 'Edit' popup menu
@@ -104,7 +105,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 				JMenuItem miFont = new JMenuItem(Menu.mFormat.FONT.toString());
 				this.miAutoWrap.addActionListener(new TeClickEvent(this));
 				miFont.addActionListener(new TeClickEvent(this));
-			mFormat.add(miAutoWrap);
+			mFormat.add(this.miAutoWrap);
 			mFormat.add(miFont);
 		mb.add(mFormat);
 			JMenu mView = new JMenu(Menu.VIEW.toString());
@@ -119,9 +120,9 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 				mZoom.add(mZoomOut);
 				mZoom.add(mDefaultZoom);
 				mView.add(mZoom);
-				JMenuItem mStatusBar = new JMenuItem(Menu.mView.STATUS_BAR.toString());
-				mStatusBar.addActionListener(new TeClickEvent(this));
-			mView.add(mStatusBar);
+				this.miStatusBar = new JMenuItem(Menu.mView.STATUS_BAR.toString());
+				this.miStatusBar.addActionListener(new TeClickEvent(this));
+			mView.add(this.miStatusBar);
 		mb.add(mView);
 			JMenu mAbout = new JMenu(Menu.ABOUT.toString());
 				JMenuItem mAboutTe = new JMenuItem(Menu.mAbout.ABOUT_TE.toString());
@@ -160,6 +161,9 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		this.add(this.statusBar,BorderLayout.SOUTH);
 		this.statusBar.setPreferredSize(new Dimension(this.getWidth(),TE_JP1_HEIGHT));
 		this.statusBar.setLayout(new BoxLayout(this.statusBar,BoxLayout.X_AXIS));
+		this.statusBar.setVisible(false);
+//		boolean visible = this.statusBar.isVisible();
+//		System.out.println("statusBar visible => "+visible);
 		return true;
 	}
 }

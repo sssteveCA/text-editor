@@ -41,7 +41,7 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 			//File -> New
 			this.te.textarea.setText("");
 		}
-		else if(cmd == Menu.mFile.OPEN.toString()) {
+		else if(cmd.equals(Menu.mFile.OPEN.toString())) {
 			//File -> Open
 			if(fm.open()) {
 				//File content readed
@@ -57,7 +57,7 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 				}//if(errno != OPEN_CANCEL) {
 			}
 		}//else if(cmd == Menu.mFile.OPEN.toString()) {
-		else if(cmd == Menu.mFile.SAVE.toString()) {
+		else if(cmd.equals(Menu.mFile.SAVE.toString())) {
 			//File -> Save
 			if(fm.save()) {
 				//File saved
@@ -71,11 +71,11 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 				}
 			}
 		}//else if(cmd == Menu.mFile.SAVE.toString()) {
-		else if(cmd == Menu.mFile.PRINT.toString()) {
+		else if(cmd.equals(Menu.mFile.PRINT.toString())) {
 			//File -> Print
 			PrintDialog pd = new PrintDialog(this.te);
 		}//else if(cmd == Menu.mFile.PRINT.toString) {
-		else if(cmd == Menu.mFile.EXIT.toString()) {
+		else if(cmd.equals(Menu.mFile.EXIT.toString())) {
 			//File -> Exit
 			int r = JOptionPane.showConfirmDialog(null, MSG_EXIT, DLG_EXIT_TITLE, JOptionPane.YES_NO_OPTION);
 			if(r == JOptionPane.YES_OPTION) {
@@ -83,31 +83,31 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 				te.dispose();
 			}
 		}//else if(cmd == Menu.mFile.EXIT.toString()) {
-		else if(cmd == Menu.mEdit.CUT.toString()) {
+		else if(cmd.equals(Menu.mEdit.CUT.toString())) {
 			//Edit -> Cut
 			this.te.textarea.cut();
 		}
-		else if(cmd == Menu.mEdit.COPY.toString()) {
+		else if(cmd.equals(Menu.mEdit.COPY.toString())) {
 			//Edit -> Copy
 			this.te.textarea.copy();
 		}
-		else if(cmd == Menu.mEdit.PASTE.toString()) {
+		else if(cmd.equals(Menu.mEdit.PASTE.toString())) {
 			//Edit -> Paste
 			this.te.textarea.paste();
 		}
-		else if(cmd == Menu.mEdit.FIND.toString()) {
+		else if(cmd.equals(Menu.mEdit.FIND.toString())) {
 			//Edit -> Find
 			TextFind tf = new TextFind(this.te,DLG_TEXTFIND_TITLE);
 		}
-		else if(cmd == Menu.mEdit.FIND_PRE.toString()) {
+		else if(cmd.equals(Menu.mEdit.FIND_PRE.toString())) {
 			//Edit -> Find Previous
 			this.findTextItemsAction(false);
 		}
-		else if(cmd == Menu.mEdit.FIND_NEXT.toString()) {
+		else if(cmd.equals(Menu.mEdit.FIND_NEXT.toString())) {
 			//Edit -> Find Next
 			this.findTextItemsAction(true);
 		}
-		else if(cmd == Menu.mEdit.SELECT_ALL.toString()) {
+		else if(cmd.equals(Menu.mEdit.SELECT_ALL.toString())) {
 			//Edit -> Select All
 			this.te.textarea.selectAll();
 		}
@@ -116,48 +116,48 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 			//enable word wrap if is disabled and viceversa
 			this.autoWrapAction();
 		}//else if(cmd.equals(Menu.mFormat.AUTO_WRAP.toString()) || cmd.equals("V "+Menu.mFormat.AUTO_WRAP.toString())) {
-		else if(cmd == Menu.mFormat.FONT.toString()) {
+		else if(cmd.equals(Menu.mFormat.FONT.toString())) {
 			//Format -> Font
 			MyFontChooser mfc = new MyFontChooser(this.te,DLG_FONTCHOOSER_TITLE,true);
 		}
-		else if(cmd == Menu.mView.mZoom.ZOOM_IN.toString()) {
+		else if(cmd.equals(Menu.mView.mZoom.ZOOM_IN.toString())) {
 			//View -> Zoom -> Zoom In
 			FontUtils fu = new FontUtils(this.te);
 			fu.changeSize(FontUtils.ACTION_INCREASE);
 		}
-		else if(cmd == Menu.mView.mZoom.ZOOM_OUT.toString()) {
+		else if(cmd.equals(Menu.mView.mZoom.ZOOM_OUT.toString())) {
 			//View -> Zoom -> Zoom out
 			FontUtils fu = new FontUtils(this.te);
 			fu.changeSize(FontUtils.ACTION_DECREASE);
 		}
-		else if(cmd == Menu.mView.mZoom.DEFAULT_ZOOM.toString()) {
+		else if(cmd.equals(Menu.mView.mZoom.DEFAULT_ZOOM.toString())) {
 			//View -> Zoom -> Default zoom
 			FontUtils fu = new FontUtils(this.te);
 			fu.changeSize(FontUtils.ACTION_DEFAULTSIZE);
 		}
-		else if(cmd == Menu.mAbout.ABOUT_TE.toString()) {
+		else if(cmd.equals(Menu.mAbout.ABOUT_TE.toString())) {
 			//? -> About Text Editor
 			About ab = new About(this.te,DLG_ABOUT_TITLE);
 		}
-		else if(cmd == PopupVals.popMenu.CUT.toString()) {
+		else if(cmd.equals(PopupVals.popMenu.CUT.toString())) {
 			//Right click -> Cut
 			this.te.textarea.cut();
 		}
-		else if(cmd == PopupVals.popMenu.COPY.toString()) {
+		else if(cmd.equals(PopupVals.popMenu.COPY.toString())){
 			//Right click -> Copy
 			this.te.textarea.copy();
 		}
-		else if(cmd == PopupVals.popMenu.PASTE.toString()) {
+		else if(cmd.equals(PopupVals.popMenu.PASTE.toString())) {
 			//Right click -> Paste
 			this.te.textarea.paste();
 		}
-		else if(cmd == PopupVals.popMenu.SELECT_ALL.toString()) {
+		else if(cmd.equals(PopupVals.popMenu.SELECT_ALL.toString())) {
 			//Right click -> Select All
 			this.te.textarea.selectAll();
 		}
-		else if(cmd == Menu.mView.STATUS_BAR.toString()) {
+		else if(cmd.equals(Menu.mView.STATUS_BAR.toString()) || cmd.equals(Menu.mView.STATUS_BAR.toString()+" => ON")) {
 			//View -> Status Bar
-			
+			this.statusBarAction();
 		}
 		else {
 		}
@@ -209,6 +209,16 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 	
 	//Executed when user clicks in View -> Status Bar
 	private void statusBarAction() {
-		
+		//Check if status bar is visible or not
+		boolean visible = this.te.statusBar.isVisible();
+		System.out.println("TeClickEvent statusBar visible => "+visible);
+		if(visible) {
+			this.te.statusBar.setVisible(false);
+			this.te.miStatusBar.setText(Menu.mView.STATUS_BAR.toString());
+		}//if(visible) {
+		else {
+			this.te.statusBar.setVisible(true);
+			this.te.miStatusBar.setText(Menu.mView.STATUS_BAR.toString()+" => ON");
+		}
 	}
 }
