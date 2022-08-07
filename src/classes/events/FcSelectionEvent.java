@@ -17,7 +17,7 @@ import classes.dialogs.MyFontChooser;
 //When a selection in JList changes
 public class FcSelectionEvent implements ListSelectionListener {
 	
-	private final static Logger log = Logger.getLogger("classes.frames.TextEditor");
+	private final static Logger log = Logger.getLogger("classes.events.FcSelectionEvent");
 	private MyFontChooser mfc;
 	
 	public FcSelectionEvent(MyFontChooser mfc) {
@@ -39,8 +39,6 @@ public class FcSelectionEvent implements ListSelectionListener {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
 	}
 	
 	//Change font style preview in FontChooser dialog after params changed

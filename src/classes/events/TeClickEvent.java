@@ -2,11 +2,17 @@ package classes.events;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import classes.FileManager;
 import classes.FindTextActions;
@@ -26,6 +32,7 @@ import interfaces.PopupVals;
 //Click events for Text Editor window
 public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constants,FtaConstants{
 	
+	private final static Logger log = Logger.getLogger("classes.events.TeClickEvent");
 	private TextEditor te;
 	
 	public TeClickEvent(TextEditor te) {
@@ -36,6 +43,63 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		//Get Text from textarea
+		Properties prop = new Properties();
+		try {
+			prop.load((TeClickEvent.class).getResourceAsStream("../../log4j.properties"));
+			PropertyConfigurator.configure(prop);
+			log.setLevel(Level.ALL);
+			this.performMenuItemAction(e);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}		
+	}
+	
+	//Executed when user clicks on Format -> Auto Wrap
+	private void autoWrapAction() {
+		//enable word wrap if is disabled and viceversa
+		boolean lineWrap = this.te.textarea.getLineWrap();
+		boolean wordWrap = this.te.textarea.getWrapStyleWord();
+		if(!lineWrap)lineWrap = true;
+		else lineWrap = false;
+		if(!wordWrap) wordWrap = true;
+		else wordWrap = false;
+		this.te.textarea.setLineWrap(lineWrap);
+		this.te.textarea.setWrapStyleWord(wordWrap);
+		boolean enabled = (lineWrap && wordWrap); //True if text wrap is enabled
+		if(enabled)this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString()+" => ON");
+		else this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString());
+	}
+	
+	//Executed when user clicks on Find Next or Find Pre menu items
+	private void findTextItemsAction(boolean downSelected) {
+		JTextArea jta_content = this.te.textarea;
+		String search = this.te.searchString;
+		Map<String, Object>options = Map.ofEntries(
+				new AbstractMap.SimpleEntry<String,Object>("caseInsensitive",this.te.caseInsensitive),
+				new AbstractMap.SimpleEntry<String,Object>("downSelected",downSelected)
+				);
+		try {
+			FindTextActions fta = new FindTextActions(jta_content,search,options);
+			boolean searched = fta.checkSearch();
+			if(searched) {
+				//Search string found in JTextArea box
+				this.te.textarea = fta.getJtaContent();
+			}//if(searched) {
+			else {
+				byte errno = fta.getErrno();
+				if(errno == FTA_SEARCHNOTFOUND)
+					JOptionPane.showMessageDialog(this.te, "Impossibile trovare '"+search+"'",TF_JOP1_TITLE,JOptionPane.WARNING_MESSAGE);	
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(this.te, e1.getMessage());
+		}	
+	}
+	
+	//Check clicked menu item and perform action
+	private void performMenuItemAction(ActionEvent e) {
 		FileManager fm = new FileManager(this.te.textarea.getText());
 		String cmd = e.getActionCommand();
 		if(cmd == Menu.mFile.NEW.toString()) {
@@ -170,50 +234,6 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		}
 		else {
 		}
-		
-	}
-	
-	//Executed when user clicks on Format -> Auto Wrap
-	private void autoWrapAction() {
-		//enable word wrap if is disabled and viceversa
-		boolean lineWrap = this.te.textarea.getLineWrap();
-		boolean wordWrap = this.te.textarea.getWrapStyleWord();
-		if(!lineWrap)lineWrap = true;
-		else lineWrap = false;
-		if(!wordWrap) wordWrap = true;
-		else wordWrap = false;
-		this.te.textarea.setLineWrap(lineWrap);
-		this.te.textarea.setWrapStyleWord(wordWrap);
-		boolean enabled = (lineWrap && wordWrap); //True if text wrap is enabled
-		if(enabled)this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString()+" => ON");
-		else this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString());
-	}
-	
-	//Executed when user clicks on Find Next or Find Pre menu items
-	private void findTextItemsAction(boolean downSelected) {
-		JTextArea jta_content = this.te.textarea;
-		String search = this.te.searchString;
-		Map<String, Object>options = Map.ofEntries(
-				new AbstractMap.SimpleEntry<String,Object>("caseInsensitive",this.te.caseInsensitive),
-				new AbstractMap.SimpleEntry<String,Object>("downSelected",downSelected)
-				);
-		try {
-			FindTextActions fta = new FindTextActions(jta_content,search,options);
-			boolean searched = fta.checkSearch();
-			if(searched) {
-				//Search string found in JTextArea box
-				this.te.textarea = fta.getJtaContent();
-			}//if(searched) {
-			else {
-				byte errno = fta.getErrno();
-				if(errno == FTA_SEARCHNOTFOUND)
-					JOptionPane.showMessageDialog(this.te, "Impossibile trovare '"+search+"'",TF_JOP1_TITLE,JOptionPane.WARNING_MESSAGE);	
-			}
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			JOptionPane.showMessageDialog(this.te, e1.getMessage());
-		}	
 	}
 	
 	//Executed when user clicks in View -> Status Bar
