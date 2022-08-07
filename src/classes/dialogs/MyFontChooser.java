@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagLayout;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -18,6 +20,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import classes.common.Functions;
 import classes.events.FcClickEvent;
 import classes.events.FcSelectionEvent;
@@ -30,6 +36,7 @@ import interfaces.FcLists;
 public class MyFontChooser extends JDialog implements Constants,FcLists {
 	
 	private static final long serialVersionUID = 1L;
+	private final static Logger log = Logger.getLogger("classes.dialogs.MyFontChooser");
 	//Available font list in OS
 	private final String availableFonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 	
@@ -60,6 +67,19 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	public MyFontChooser(TextEditor te, String title, boolean modal) {
 		super(te,title,modal);
 		this.te = te;
+		Properties prop = new Properties();
+		try {
+			prop.load((MyFontChooser.class).getResourceAsStream("../../log4j.properties"));
+			PropertyConfigurator.configure(prop);
+			log.setLevel(Level.ALL);
+			this.setDialog();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	private void setDialog() {
 		this.setJButtons();
 		this.setJComboBoxs();
 		this.setJLabels();
@@ -161,9 +181,6 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 	@SuppressWarnings("unchecked")
 	private void setFontOptions() {
 		Font usedFont = this.te.textarea.getFont();
-		System.out.println("MyFontChooser nome font => "+usedFont.getFamily());
-		System.out.println("MyFontChooser style font => "+usedFont.getStyle());
-		System.out.println("MyFontChooser dimensione font => "+usedFont.getSize());
 		String family = usedFont.getFamily();
 		String style = Functions.getFontStyleStr(usedFont.getStyle());
 		Byte size = (byte) usedFont.getSize();
