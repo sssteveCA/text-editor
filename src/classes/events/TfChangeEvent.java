@@ -4,6 +4,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 
+import org.apache.log4j.Logger;
+
 import classes.dialogs.TextFind;
 
 //Change text listener for Text Find dialog
