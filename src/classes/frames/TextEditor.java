@@ -4,9 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Properties;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -23,6 +25,10 @@ import javax.swing.JTextArea;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import classes.FontUtils;
 import classes.common.Functions;
 import classes.events.TeCaretEvent;
@@ -37,7 +43,7 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	private static final long serialVersionUID = 1L;
 	private JScrollPane jsp_text; //Scroll bars for Text Editor window textarea
 	private String title; //title of the window
-	
+	private final static Logger log = Logger.getLogger("classes.frames.TextEditor");
 	
 	public JMenuItem miAutoWrap; //Needed for change the label on click
 	public JMenuItem miStatusBar; //Needed for change the label on click
@@ -52,6 +58,19 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	
 	public TextEditor(String title) {
 		super(title);
+		Properties prop = new Properties();
+		try {
+			prop.load((TextEditor.class).getResourceAsStream("../../log4j.properties"));
+			PropertyConfigurator.configure(prop);
+			log.setLevel(Level.ALL);
+			this.setFrame();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void setFrame() {
 		this.textarea = new JTextArea();
 		this.textarea.addMouseListener(new TeMouseEvent(this));
 		this.textarea.addCaretListener(new TeCaretEvent(this));
