@@ -24,6 +24,10 @@ public class About extends JDialog implements Constants {
 	
 	public About(TextEditor te, String title) {
 		super(te,title);
+		this.setAboutDialog();;	
+	}
+	
+	public void setAboutDialog() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(AB_WINDOW_WIDTH,AB_WINDOW_HEIGHT);
 		this.setLocation(AB_WINDOW_X,AB_WINDOW_Y);
@@ -45,7 +49,6 @@ public class About extends JDialog implements Constants {
 		this.jb_ok.addActionListener(new AboutClickEvent(this));
 		this.add(this.jpanel);
 		this.add(this.jb_ok);
-		
 	}
 
 }
