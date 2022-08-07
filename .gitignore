@@ -1,6 +1,4 @@
 **.settings**
 
-
-/bin/*
-**.class**
 /bin/
+/target/
