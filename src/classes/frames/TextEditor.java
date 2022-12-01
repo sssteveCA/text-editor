@@ -1,36 +1,13 @@
 package classes.frames;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Properties;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
-import classes.FontUtils;
-import classes.common.Functions;
 import classes.events.TeCaretEvent;
 import classes.events.TeClickEvent;
 import classes.events.TeMouseEvent;
@@ -38,17 +15,17 @@ import interfaces.Constants;
 import interfaces.MenuVals;
 import interfaces.PopupVals;
 
+/**
+ * Text Editor main window
+ */
 public class TextEditor extends JFrame implements Constants,MenuVals{
 
 	private static final long serialVersionUID = 1L;
 	private JScrollPane jsp_text; //Scroll bars for Text Editor window textarea
 	private String title; //title of the window
-	private final static Logger log = Logger.getLogger("classes.frames.TextEditor");
+	
 	
 	public JMenuItem miAutoWrap; //Needed for change the label on click
-	public JMenuItem miStatusBar; //Needed for change the label on click
-	public JPanel statusBar; //This panel appears at the bottom of the window when user clicks on statusBar menu item
-	public LinkedHashMap<String, JLabel> statusBarLabels;
 	public JTextArea textarea;
 	//Right click 'Edit' popup menu
 	public final JPopupMenu pm_edit = new JPopupMenu(TE_PM1);
@@ -58,19 +35,6 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 	
 	public TextEditor(String title) {
 		super(title);
-		Properties prop = new Properties();
-		try {
-			prop.load((TextEditor.class).getResourceAsStream("../../log4j.properties"));
-			PropertyConfigurator.configure(prop);
-			log.setLevel(Level.ALL);
-			this.setFrame();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private void setFrame() {
 		this.textarea = new JTextArea();
 		this.textarea.addMouseListener(new TeMouseEvent(this));
 		this.textarea.addCaretListener(new TeCaretEvent(this));
@@ -78,13 +42,15 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		//this.add(this.textarea);
 		this.add(jsp_text);
 		this.setJMenuBar(this.menu());
-		this.setStatusBar();
 		this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 	
-	//create the menu for the window
+	/**
+	 * Create the menu of the window
+	 * @return The menu instance
+	 */
 	private JMenuBar menu() {
 		JMenuBar mb = new JMenuBar();
 			JMenu mFile = new JMenu(Menu.FILE.toString());
@@ -134,14 +100,10 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 			JMenu mFormat = new JMenu(Menu.FORMAT.toString());
 				this.miAutoWrap = new JMenuItem(Menu.mFormat.AUTO_WRAP.toString());
 				JMenuItem miFont = new JMenuItem(Menu.mFormat.FONT.toString());
-				JMenuItem miColor = new JMenuItem(Menu.mFormat.COLOR.toString());
 				this.miAutoWrap.addActionListener(new TeClickEvent(this));
 				miFont.addActionListener(new TeClickEvent(this));
-				miColor.addActionListener(new TeClickEvent(this));
-			mFormat.add(this.miAutoWrap);
+			mFormat.add(miAutoWrap);
 			mFormat.add(miFont);
-			mFormat.addSeparator();
-			mFormat.add(miColor);
 		mb.add(mFormat);
 			JMenu mView = new JMenu(Menu.VIEW.toString());
 				JMenu mZoom = new JMenu(Menu.mView.ZOOM.toString());
@@ -155,9 +117,9 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 				mZoom.add(mZoomOut);
 				mZoom.add(mDefaultZoom);
 				mView.add(mZoom);
-				this.miStatusBar = new JMenuItem(Menu.mView.STATUS_BAR.toString());
-				this.miStatusBar.addActionListener(new TeClickEvent(this));
-			mView.add(this.miStatusBar);
+				JMenuItem mStatusBar = new JMenuItem(Menu.mView.STATUS_BAR.toString());
+				mStatusBar.addActionListener(new TeClickEvent(this));
+			mView.add(mStatusBar);
 		mb.add(mView);
 			JMenu mAbout = new JMenu(Menu.ABOUT.toString());
 				JMenuItem mAboutTe = new JMenuItem(Menu.mAbout.ABOUT_TE.toString());
@@ -180,63 +142,15 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		return mb;
 	}
 	
-	//Get the text from window textarea
+	/**
+	 * Get the text from window textarea
+	 * @return
+	 */
 	public String getText() {
 		String str="";
 		for(String line : this.textarea.getText().split("\n")) {
 			str+=line+"\n";
 		}
 		return str;
-	}
-	
-	//Create/Set the JPanel status bar 
-	/*
-	 * visible - show/hide the JPanel
-	 * row - row number of the caret in JTextArea
-	 * column - number of the caret in JTextArea
-	 * zoom - zoom level in percentage
-	 * cr - carriage return type
-	 * charset - charset encoding
-	 * */
-	public void setStatusBar() {
-		if(this.statusBar == null)
-			this.statusBar = new JPanel();
-		//Set status bar style
-		this.statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
-		this.add(this.statusBar,BorderLayout.SOUTH);
-		this.statusBar.setPreferredSize(new Dimension(this.getWidth(),TE_JP1_HEIGHT));
-		this.statusBar.setLayout(new BoxLayout(this.statusBar,BoxLayout.X_AXIS));
-		//Create HashMap with Jlabels for container
-		this.statusBarLabels = new LinkedHashMap<String, JLabel>();
-		//this.statusBarLabels.clear();
-		this.statusBarLabels.put(TE_JLAB_JP1_VOID, new JLabel(""));
-		this.statusBarLabels.put(TE_JLAB_JP1_CARETPOSITION, new JLabel(""));
-		this.statusBarLabels.put(TE_JLAB_JP1_ZOOM, new JLabel(""));
-		this.statusBarLabels.put(TE_JLAB_JP1_CARRIAGERETURN, new JLabel(""));
-		this.statusBarLabels.put(TE_JLAB_JP1_CHARSET,new JLabel(""));
-		//Add Jlabels to container with loop
-		this.statusBarLabels.forEach((key, value) -> {
-			value.setSize(new Dimension(this.statusBar.getWidth() / 5, this.statusBar.getHeight()));
-			this.statusBar.add(value);
-			this.statusBar.add(Box.createGlue());
-		});
-		//Set the text for JLabels
-		this.setStatusBarLabels();
-		//The bar is invible at the beginning
-		this.statusBar.setVisible(false);
-	}
-	
-	public void setStatusBarLabels() {
-		int row = Functions.getCaretRow(this.textarea);
-		int column = Functions.getCaretColumn(this.textarea);
-		this.statusBarLabels.get(TE_JLAB_JP1_CARETPOSITION).setText("Linea "+row+", colonna "+column);
-		Font font = this.textarea.getFont();
-		int zoom = FontUtils.getFontRelativeSize(font, FONT_DEFAULT_SIZE);
-		this.statusBarLabels.get(TE_JLAB_JP1_ZOOM).setText(zoom+"%");
-		String cr = Functions.getCurrentLineSeparator();
-		//System.out.println("setStatusBarLabels cr => "+cr);
-		this.statusBarLabels.get(TE_JLAB_JP1_CARRIAGERETURN).setText(cr);
-		String charset = Charset.defaultCharset().name();
-		this.statusBarLabels.get(TE_JLAB_JP1_CHARSET).setText(charset);
 	}
 }

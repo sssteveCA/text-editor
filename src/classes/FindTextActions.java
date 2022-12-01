@@ -7,13 +7,14 @@ import java.util.Map;
 import javax.swing.JTextArea;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
-import javax.swing.text.DefaultHighlighter.DefaultHighlightPainter;
 import javax.swing.text.Highlighter;
 
 import interfaces.FtaConstants;
 
 
-//This class contains actions done by Text Find dialog
+/**
+ * This class contains actions done by Text Find dialog
+ */
 public class FindTextActions implements FtaConstants{
 	
 	private JTextArea jta_content; //JTextArea box that contains text for search
@@ -52,7 +53,10 @@ public class FindTextActions implements FtaConstants{
 		return this.error;
 	}
 	
-	//Set Map property values
+	/**
+	 * Set Map property values
+	 * @param options
+	 */
 	private void setMap(Map<String, Object> options) {
 		if(options == null)options = Map.ofEntries();
 		//Mutable Map
@@ -67,7 +71,10 @@ public class FindTextActions implements FtaConstants{
 			this.options.put("downSelected", true);
 	}
 	
-	//Check the search string in JTextArea content
+	/**
+	 * Check the search string in JTextArea content
+	 * @return
+	 */
 	public boolean checkSearch() {
 		boolean ok = false;
 		//JTextArea of parent frame needs the focus

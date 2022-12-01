@@ -1,24 +1,18 @@
 package classes.events;
 
 import java.awt.Font;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.Properties;
-
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import classes.dialogs.MyFontChooser;
 import classes.frames.TextEditor;
 import interfaces.FcLists;
 
-//Click events of MyFontChooser dialog
+/**
+ * Click events of MyFontChooser dialog
+ */
 public class FcClickEvent implements ActionListener,FcLists{
 	
-	private final static Logger log = Logger.getLogger("classes.events.FcClickEvent");
 	private MyFontChooser mfc;
 	private TextEditor te;
 	
@@ -30,28 +24,22 @@ public class FcClickEvent implements ActionListener,FcLists{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		Properties prop = new Properties();
-		try {
-			prop.load((FcClickEvent.class).getResourceAsStream("../../log4j.properties"));
-			PropertyConfigurator.configure(prop);
-			log.setLevel(Level.ALL);
-			Object fired = e.getSource(); //object when event occurred
-			if(fired.equals(this.mfc.jb_ok)) {
-				//Ok button pressed
-				this.okClickActions();
-				this.mfc.dispose();
-			}
-			else if(fired.equals(this.mfc.jb_reset)) {
-				//Reset button pressed
-				this.mfc.dispose();
-			}
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}		
+		Object fired = e.getSource(); //object when event occurred
+		if(fired.equals(this.mfc.jb_ok)) {
+			//Ok button pressed
+			this.okClickActions();
+			this.mfc.dispose();
+		}
+		else if(fired.equals(this.mfc.jb_reset)) {
+			//Reset button pressed
+			this.mfc.dispose();
+		}
+		
 	}
 	
-	//Actions when user press OK button in Font Chooser dialog
+	/**
+	 * Actions when user press OK button in Font Chooser dialog
+	 */
 	private void okClickActions() {
 		Font font = this.te.textarea.getFont();
 		String fontName = this.mfc.jlist_font.getSelectedValue() != null ? this.mfc.jlist_font.getSelectedValue().toString() : null;
@@ -94,7 +82,6 @@ public class FcClickEvent implements ActionListener,FcLists{
 		}
 		font = new Font(fName,fStyle,fSize);
 		this.te.textarea.setFont(font);
-		this.te.setStatusBarLabels();
 	}
 
 }

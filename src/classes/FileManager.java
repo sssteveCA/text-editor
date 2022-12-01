@@ -13,7 +13,9 @@ import javax.swing.JFileChooser;
 import interfaces.Constants;
 import interfaces.FmConstants;
 
-//This class contains File operations
+/**
+ * This class perform text file operations
+ */
 public class FileManager implements FmConstants, Constants {
 	
 	private String text;
@@ -61,7 +63,10 @@ public class FileManager implements FmConstants, Constants {
 		return this.error;
 	}
 	
-	//Open file dialog
+	/**
+	 * Open file dialog
+	 * @return 
+	 */
 	public boolean open() {
 		boolean opened = false;
 		this.errno = 0;
@@ -96,10 +101,12 @@ public class FileManager implements FmConstants, Constants {
 		return opened;
 	}
 	
-	//Open Save file dialog
+	/**
+	 * Open Save file dialog
+	 * @return
+	 */
 	public boolean save() {
 		boolean save = false;
-		String msg = "";
 		this.errno = 0;
 		JFileChooser fc = new JFileChooser(this.path);
 		int r = fc.showSaveDialog(null);
@@ -131,7 +138,13 @@ public class FileManager implements FmConstants, Constants {
 		return save;
 	}
 	
-	//Open file stream and get its content
+	/**
+	 * Open file stream and get its content
+	 * @param path the path of the file to open
+	 * @return the content of the file
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	private String getFile(String path) throws FileNotFoundException, IOException {
 		String content = "";
 		File file = new File(path);
@@ -149,7 +162,12 @@ public class FileManager implements FmConstants, Constants {
 		return content;
 	}
 	
-	//Save content to file stream
+	/**
+	 * Save the content to a file
+	 * @param path the file to be saved
+	 * @param content the content to insert to the file
+	 * @return
+	 */
 	private boolean fileSave(String path, String content) {
 		boolean saved = false;
 		FileWriter fw;

@@ -1,6 +1,8 @@
 package interfaces;
 
-//Font Chooser dialog JLists
+/**
+ * Font Chooser dialog JLists
+ */
 public interface FcLists {
 	String fl_fonts[] = {
 			"Arial" , "Comic Sans MS","Consolas",

@@ -2,13 +2,12 @@ package classes.events;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-
-import org.apache.log4j.Logger;
 
 import classes.dialogs.TextFind;
 
-//Change text listener for Text Find dialog
+/**
+ * Change text listener of Text Find dialog
+ */
 public class TfChangeEvent implements DocumentListener {
 	
 	private TextFind tf;
@@ -51,7 +50,7 @@ public class TfChangeEvent implements DocumentListener {
 	@Override
 	public void changedUpdate(DocumentEvent e) {
 		// TODO Auto-generated method stub
-		/*System.out.println("TfChangeEvent uno o più attributi cambiati");
+		/*System.out.println("TfChangeEvent uno o piï¿½ attributi cambiati");
 		javax.swing.text.Document doc = e.getDocument();
 		try {
 			System.out.println("Testo => "+doc.getText(0,doc.getLength()));

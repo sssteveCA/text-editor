@@ -1,6 +1,8 @@
 package interfaces;
 
-//This interface contains common constants used by this program
+/**
+ * Common constants used by this program
+ */
 public interface Constants {
 	
 	//About dialog number constants
@@ -28,10 +30,7 @@ public interface Constants {
 	//JButton
 	String AB_BTN1 = "OK";
 	//JLabel
-	String AB_TA1 = "Text Editor è un programma gratuito, scritto in Java che si comporta in maniera simile al Blocco Note";
-	
-	//Color Chooser dialog
-	String CC_DIALOG_TITLE = "Scegli un colore";
+	String AB_TA1 = "Text Editor ï¿½ un programma gratuito, scritto in Java che si comporta in maniera simile al Blocco Note";
 	
 	//Dialog box
 	String DLG_ABOUT_TITLE = "Informazioni su Text Editor";
@@ -43,9 +42,6 @@ public interface Constants {
 	
 	//Errors
 	String ERR_UNKNOWN = "Errore sconosciuto";
-	
-	//Font
-	int FONT_DEFAULT_SIZE = 12;
 	
 	//Font Chooser dialog number constants
 	//int FC_WINDOW_HEIGHT = 450;
@@ -134,7 +130,7 @@ public interface Constants {
 	String FC_JP1 = "Esempio";
 	
 	//File
-	String FILE_SAVED = "Il file è stato salvato";
+	String FILE_SAVED = "Il file ï¿½ stato salvato";
 	
 	//Messages
 	String MSG_EXIT = "Sei sicuro di voler chiudere il programma?";
@@ -143,19 +139,9 @@ public interface Constants {
 	//Text Editor window number constants
 	int TE_WINDOW_HEIGHT = 600;
 	int TE_WINDOW_WIDTH = 600;
-	//JPanel
-	int TE_JP1_HEIGHT = 24;
 	
 	//TextEditor window string constants
 	String TE_PM1 = "Modifica"; //Name of popup menu
-	//JLabel of JPanel status bar keys
-	String TE_JLAB_JP1_VOID = "void";
-	String TE_JLAB_JP1_CARETPOSITION = "caretPosition";
-	String TE_JLAB_JP1_ZOOM = "zoom";
-	String TE_JLAB_JP1_CARRIAGERETURN = "carriageReturn";
-	String TE_JLAB_JP1_CHARSET = "charset";
-	//Text Editor window string constants
-	String TE_WINDOW_NAME = "TextEditor";
 	
 	//Text Find dialog number constants
 	int TF_WINDOW_HEIGHT = 200;
@@ -205,6 +191,7 @@ public interface Constants {
 	int TF_TFIELD1_X = 80;
 	int TF_TFIELD1_Y = 5;
 	
+	
 	//Text Find dialog string constants
 	//JButton
 	String TF_BTN1 = "Trova successivo";
@@ -220,7 +207,8 @@ public interface Constants {
 	String TF_JOP1_TITLE = "Text Editor";
 	//JRadioButton
 	String TF_RB1 = "Su";
-	String TF_RB2 = "Giù";
-	
+	String TF_RB2 = "Giï¿½";
+	//Text Editor window string constants
+	String TE_WINDOW_NAME = "TextEditor";
 	
 }

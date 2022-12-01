@@ -7,25 +7,20 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import java.io.IOException;
-import java.util.Properties;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
 import classes.frames.TextEditor;
 
-//Print Dialog GUI and events
+/**
+ * Print Dialog GUI and events
+ */
 public class PrintDialog implements Printable {
 	
 	//Upper left coordinates of the string to print
 	public static final int cX = 100;
 	public static final int cY = 100;
-	private final static Logger log = Logger.getLogger("classes.dialogs.PrintDialog");
 	
 	public TextEditor te;
 	public PrinterJob pj;
@@ -33,16 +28,7 @@ public class PrintDialog implements Printable {
 	
 	public PrintDialog(TextEditor te) {
 		this.te = te;
-		Properties prop = new Properties();
-		try {
-			prop.load((PrintDialog.class).getResourceAsStream("../../log4j.properties"));
-			PropertyConfigurator.configure(prop);
-			log.setLevel(Level.ALL);
-			this.setPrintDialog();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+		this.setPrintDialog();
 	}
 
 	//User prints the document

@@ -1,8 +1,12 @@
 package interfaces;
 
-//Popup menu values
+/**
+ * Popup menu values
+ */
 public interface PopupVals {
-	//Right click popup menu
+	/**
+	 * Right click popup menu
+	 */
 	public enum popMenu{
 		CUT("Taglia"),
 		COPY("Copia"),
