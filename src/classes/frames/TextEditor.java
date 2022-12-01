@@ -42,7 +42,8 @@ public class TextEditor extends JFrame implements Constants,MenuVals{
 		//this.add(this.textarea);
 		this.add(jsp_text);
 		this.setJMenuBar(this.menu());
-		this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
+		//this.setSize(TE_WINDOW_WIDTH,TE_WINDOW_HEIGHT);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
