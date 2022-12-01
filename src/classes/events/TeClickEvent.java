@@ -118,10 +118,8 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 			//enable word wrap if is disabled and viceversa
 			boolean lineWrap = this.te.textarea.getLineWrap();
 			boolean wordWrap = this.te.textarea.getWrapStyleWord();
-			if(!lineWrap)lineWrap = true;
-			else lineWrap = false;
-			if(!wordWrap) wordWrap = true;
-			else wordWrap = false;
+			lineWrap = !lineWrap;
+			wordWrap = !wordWrap;
 			this.te.textarea.setLineWrap(lineWrap);
 			this.te.textarea.setWrapStyleWord(wordWrap);
 			boolean enabled = (lineWrap && wordWrap); //True if text wrap is enabled
