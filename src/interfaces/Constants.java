@@ -30,8 +30,11 @@ public interface Constants {
 	//JButton
 	String AB_BTN1 = "OK";
 	//JLabel
-	String AB_TA1 = "Text Editor � un programma gratuito, scritto in Java che si comporta in maniera simile al Blocco Note";
+	String AB_TA1 = "Text Editor è un programma gratuito, scritto in Java che si comporta in maniera simile al Blocco Note";
 	
+	//Color Chooser dialog
+	String CC_DIALOG_TITLE = "Scegli un colore";
+
 	//Dialog box
 	String DLG_ABOUT_TITLE = "Informazioni su Text Editor";
 	String DLG_EXIT_TITLE = "Chiudi il programma";
@@ -130,7 +133,7 @@ public interface Constants {
 	String FC_JP1 = "Esempio";
 	
 	//File
-	String FILE_SAVED = "Il file � stato salvato";
+	String FILE_SAVED = "Il file è stato salvato";
 	
 	//Messages
 	String MSG_EXIT = "Sei sicuro di voler chiudere il programma?";
@@ -207,7 +210,7 @@ public interface Constants {
 	String TF_JOP1_TITLE = "Text Editor";
 	//JRadioButton
 	String TF_RB1 = "Su";
-	String TF_RB2 = "Gi�";
+	String TF_RB2 = "Giù";
 	//Text Editor window string constants
 	String TE_WINDOW_NAME = "TextEditor";
 	
