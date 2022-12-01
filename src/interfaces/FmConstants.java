@@ -1,6 +1,8 @@
 package interfaces;
 
-//This interface contains constants of FileManager class
+/**
+ * Constants of FileManager class
+ */
 public interface FmConstants {
 	
 	//error codes
@@ -12,7 +14,6 @@ public interface FmConstants {
 	int SAVE_ERROR = 11;
 	int UNKNOWN_ERROR = 1000;
 	
-	//error messages
 	public enum Open{
 		CANCEL("Operazione di apertura del file cancellata"),
 		ERROR("Errore durante l'apertura del file"),

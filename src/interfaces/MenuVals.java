@@ -1,7 +1,12 @@
 package interfaces;
 
-//This interface contains menu constants
+/**
+ * This interface contains menu constants
+ */
 public interface MenuVals {
+	/**
+	 * Main menu items
+	 */
 	public enum Menu{
 		FILE("File"),
 		EDIT("Modifica"),
@@ -9,7 +14,9 @@ public interface MenuVals {
 		VIEW("Visualizza"),
 		ABOUT("?");
 		
-		//Menu -> File items
+		/**
+		 * Menu -> File items
+		 */
 		public enum mFile{
 			NEW("Nuovo"),
 			OPEN("Apri"),
@@ -25,7 +32,9 @@ public interface MenuVals {
 			public String toString() {return this.text;}
 		}//public enum MenuFile{
 		
-		//Menu -> Edit items
+		/**
+		 * Menu -> Edit items
+		 */
 		public enum mEdit{
 			CUT("Taglia"),
 			COPY("Copia"),
@@ -43,11 +52,12 @@ public interface MenuVals {
 			public String toString() {return this.text;}
 		}//public enum mEdit{
 		
-		//Menu -> Format items
+		/**
+		 * Menu -> Format items
+		 */
 		public enum mFormat{
 			AUTO_WRAP("A capo automatico"),
-			FONT("Carattere..."),
-			COLOR("Colore carattere");
+			FONT("Carattere...");
 			
 			private final String text;
 			
@@ -57,7 +67,9 @@ public interface MenuVals {
 			public String toString() {return this.text;}
 		}//public enum mFormat{
 		
-		//Menu -> View items
+		/**
+		 * Menu -> View items
+		 */
 		public enum mView{
 			ZOOM("Zoom"),
 			STATUS_BAR("Barra di stato");
@@ -83,7 +95,9 @@ public interface MenuVals {
 			public String toString() {return this.text;}
 		}//public enum mView{
 		
-		//Menu -> ? items
+		/**
+		 * Menu -> ? items
+		 */
 		public enum mAbout{
 			ABOUT_TE("Informazioni su Text Editor");
 			

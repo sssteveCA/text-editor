@@ -4,7 +4,9 @@ import java.awt.Font;
 
 import classes.frames.TextEditor;
 
-//Font options for TextEditor window
+/**
+ * Font options for TextEditor window
+ */
 public class FontUtils {
 	
 	public static final byte ACTION_DECREASE = 0; //changeSize method decrease font size
@@ -27,9 +29,11 @@ public class FontUtils {
 	}
 	
 	public float getSize() {return this.size;}
-	public Font getFont() {return this.font;}
 	
-	//Change font size. If operation = 0 decrease, else increase
+	/**
+	 * Change font size.
+	 * @param op 0 to decrease, 1 to increase
+	 */
 	public void changeSize(byte op) {
 		if(op == FontUtils.ACTION_DECREASE) {
 			if(this.size >= (FontUtils.MIN_SIZE + FontUtils.HOP)) {
@@ -43,14 +47,7 @@ public class FontUtils {
 		}
 		else this.size = FontUtils.DEFAULT_SIZE;
 		this.te.textarea.setFont(this.font.deriveFont(this.size));
-		this.font = this.te.textarea.getFont();
 	}
 	
-	//Get the relative font size (%)
-	public static int getFontRelativeSize(Font font, int defaultSize) {
-		int fontSize = font.getSize();
-		double relativeSizeDecimal = (double)fontSize / defaultSize;
-		int relativeSize = (int)(relativeSizeDecimal * 100);
-		return relativeSize;
-	}
+	
 }

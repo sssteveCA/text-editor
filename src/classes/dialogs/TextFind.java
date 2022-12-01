@@ -1,8 +1,5 @@
 package classes.dialogs;
 
-import java.io.IOException;
-import java.util.Properties;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -13,20 +10,17 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
 import classes.events.TfChangeEvent;
 import classes.events.TfClickEvent;
 import classes.frames.TextEditor;
 import interfaces.Constants;
 
-//Find text dialog in Edit -> Find
+/**
+ * Find text dialog
+ */
 public class TextFind extends JDialog implements Constants{
 	
 	private static final long serialVersionUID = 1L;
-	private final static Logger log = Logger.getLogger("classes.dialogs.TextFind");
 	
 	private TextEditor te;
 	
@@ -36,7 +30,7 @@ public class TextFind extends JDialog implements Constants{
 	public final JCheckBox jc_textCase = new JCheckBox(TF_JC1);
 	public final JCheckBox jc_textAround = new JCheckBox(TF_JC2);
 	public final JRadioButton jr_up = new JRadioButton(TF_RB1); //RadioButton 'Su'
-	public final JRadioButton jr_down = new JRadioButton(TF_RB2); //RadioButton 'Giù'
+	public final JRadioButton jr_down = new JRadioButton(TF_RB2); //RadioButton 'Giï¿½'
 	public final JTextField jt_field = new JTextField();
 	private JLabel jl_find; //Label 'Trova:'
 	private JPanel jp_direction; //JPanel 'Direzione'
@@ -44,19 +38,6 @@ public class TextFind extends JDialog implements Constants{
 	public TextFind(TextEditor te,String title) {
 		super(te,title);
 		this.te = te;
-		Properties prop = new Properties();
-		try {
-			prop.load((About.class).getResourceAsStream("../../log4j.properties"));
-			PropertyConfigurator.configure(prop);
-			log.setLevel(Level.ALL);
-			this.setDialog();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}
-	
-	private void setDialog() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(TF_WINDOW_WIDTH,TF_WINDOW_HEIGHT);
 		this.setLocation(TF_WINDOW_X, TF_WINDOW_Y);

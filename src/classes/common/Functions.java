@@ -2,22 +2,22 @@ package classes.common;
 
 import java.awt.Component;
 import java.awt.Font;
-import java.util.List;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JTextArea;
 import javax.swing.ListModel;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Utilities;
 
 import interfaces.FcLists;
 
 //This class contains common static methods
 public class Functions implements FcLists {
 	
-	//Get the font style int representation
+	/**
+	 * Get the font style int representation
+	 * @param style
+	 * @return
+	 */
 	public static int getFontStyleInt(String style) {
 		int styleInt = Font.PLAIN;
 		if(style.equals(fl_styles[1]))styleInt = Font.ITALIC;
@@ -26,7 +26,11 @@ public class Functions implements FcLists {
 		return styleInt;
 	}
 	
-	//Get the font style String representation
+	/**
+	 * Get the font style String representation
+	 * @param style
+	 * @return
+	 */
 	public static String getFontStyleStr(int style) {
 		String styleName = null;
 		switch(style) {
@@ -46,54 +50,12 @@ public class Functions implements FcLists {
 		return styleName;
 	}
 	
-	//Get the Caret column number of a JTextArea component
-	public static int getCaretColumn(JTextArea area) {
-		int caretPos = area.getCaretPosition();
-		//System.out.println("GetCaretColumn caretPos => "+caretPos);
-		try {
-			int offset = Utilities.getRowStart(area, caretPos);
-			int col = caretPos - offset + 1;
-//			System.out.println("GetCaretColumn offset => "+offset);
-//			System.out.println("GetCaretColumn col => "+col);
-			return col;
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return 1;
-		}
-	}
-	
-	//Get the Caret row number of a JTextArea component
-	public static int getCaretRow(JTextArea area) {
-		int caretPos = area.getCaretPosition();
-		//System.out.println("GetCaretRow caretPos => "+caretPos);
-		int row = (caretPos == 0) ? 1 : 0;
-		for(int offset = caretPos; offset > 0; row++) {
-			try {
-				offset = Utilities.getRowStart(area, offset) - 1;
-//				System.out.println("GetCaretRow offset => "+offset);
-//				System.out.println("GetCaretRow row => "+row);
-			} catch (BadLocationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return 1;
-			}
-		}
-		return row;
-	}
-	
-	//Get current line separator name
-	public static String getCurrentLineSeparator() {
-		String separatorName = "Windows ";
-		String separator = System.getProperty("line.separator");
-		if(separator.equals("\r\n"))
-			separatorName +=  "(CRLF)";
-		else
-			separatorName += "(LF)";
-		return separatorName;
-	}
-	
-	//Get the index position of specified value in ListModel<Byte>
+	/**
+	 * Get the index position of specified value in ListModel<Byte>
+	 * @param listModel
+	 * @param value
+	 * @return
+	 */
 	public static int getIndexByByte(ListModel<Byte> listModel, Byte value) {
 		int index = -1; //-1 if value not found
 		for(int i = 0; i < listModel.getSize(); i++) {
@@ -106,7 +68,12 @@ public class Functions implements FcLists {
 		return index;
 	}
 	
-	//Get the index position of specified value in ListModel<String>
+	/**
+	 * Get the index position of specified value in ListModel<String>
+	 * @param listModel
+	 * @param value
+	 * @return
+	 */
 	public static int getIndexByString(ListModel<String> listModel, String value) {
 		int index = -1; //-1 if value not found
 		for(int i = 0; i < listModel.getSize(); i++) {
@@ -119,7 +86,12 @@ public class Functions implements FcLists {
 		return index;
 	}
 	
-	//Get menu item by String label
+	/**
+	 * Get menu item by String label
+	 * @param jmBar
+	 * @param label
+	 * @return
+	 */
 	public static JMenuItem getMenuItem(JMenuBar jmBar,String label) {
 		JMenuItem item = null;
 		//Get number of JMenu in JMenuBar
@@ -143,5 +115,4 @@ public class Functions implements FcLists {
 		}//for(int i = 0; i < jMenuCount; i++) {
 		return item;
 	}
-
 }

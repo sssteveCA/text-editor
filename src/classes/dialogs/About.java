@@ -1,19 +1,10 @@
 package classes.dialogs;
 
-import java.awt.Color;
-import java.io.IOException;
-import java.util.Properties;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import classes.events.AboutClickEvent;
 import classes.frames.TextEditor;
@@ -23,7 +14,6 @@ import interfaces.Constants;
 public class About extends JDialog implements Constants {
 	
 	public final JButton jb_ok = new JButton(AB_BTN1);
-	private final static Logger log = Logger.getLogger("classes.dialogs.About");
 	
 	private TextEditor te;
 	private JTextArea ta_info; //Text Editor information text
@@ -31,19 +21,6 @@ public class About extends JDialog implements Constants {
 	
 	public About(TextEditor te, String title) {
 		super(te,title);
-		Properties prop = new Properties();
-		try {
-			prop.load((About.class).getResourceAsStream("../../log4j.properties"));
-			PropertyConfigurator.configure(prop);
-			log.setLevel(Level.ALL);
-			this.setAboutDialog();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void setAboutDialog() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(AB_WINDOW_WIDTH,AB_WINDOW_HEIGHT);
 		this.setLocation(AB_WINDOW_X,AB_WINDOW_Y);
@@ -65,6 +42,7 @@ public class About extends JDialog implements Constants {
 		this.jb_ok.addActionListener(new AboutClickEvent(this));
 		this.add(this.jpanel);
 		this.add(this.jb_ok);
+		
 	}
 
 }
