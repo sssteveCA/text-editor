@@ -92,11 +92,11 @@ public class PrintDialog implements Printable {
 				strOrientation = "Sconosciuto";
 				break;
 		}
-		System.out.println("Orientamento => "+strOrientation);
+		//System.out.println("Orientamento => "+strOrientation);
 		Font font = g.getFont();
-		System.out.println("Nome del font utilizzato => "+font.getFontName());
+		/* System.out.println("Nome del font utilizzato => "+font.getFontName());
 		System.out.println("Famiglia del font => "+font.getFamily());
-		System.out.println("Dimensione del font => "+font.getSize());
+		System.out.println("Dimensione del font => "+font.getSize()); */
 		int style = font.getStyle();
 		String strStyle = "";
 		switch(style) {
@@ -113,6 +113,6 @@ public class PrintDialog implements Printable {
 				strStyle = "Sconosciuto";
 				break;
 		}
-		System.out.println("Stile del font => "+strStyle);
+		//System.out.println("Stile del font => "+strStyle);
 	}
 }

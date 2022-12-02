@@ -91,7 +91,6 @@ public class FileManager implements FmConstants, Constants {
 			
 		}//if(r == JFileChooser.APPROVE_OPTION) {
 		else if(r == JFileChooser.CANCEL_OPTION) {
-			System.out.println("FileManager open CANCEL_OPTION");
 			this.errno = OPEN_CANCEL;
 		}
 		else if(r == JFileChooser.ERROR_OPTION) {
@@ -124,7 +123,6 @@ public class FileManager implements FmConstants, Constants {
 			}
 		}//if(r == JFileChooser.APPROVE_OPTION) {
 		else if(r == JFileChooser.CANCEL_OPTION) {
-			System.out.println("FileManager save() CANCEL_OPTION");
 			this.errno = SAVE_CANCEL;
 		}
 		else if(r == JFileChooser.ERROR_OPTION) {

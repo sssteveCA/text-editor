@@ -167,6 +167,7 @@ public class MyFontChooser extends JDialog implements Constants,FcLists {
 		this.add(jp_size);
 		
 	}
+
 	
 	/**
 	 * Set the JTextFields and JLists to used font options
