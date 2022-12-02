@@ -70,12 +70,12 @@ public class PrintDialog implements Printable {
 	
 	//show print info when user click print button
 	private void showPrintInfo(Graphics g, PageFormat pf, int pi) {
-		System.out.println("Larghezza pagina => "+pf.getWidth());
+		/* System.out.println("Larghezza pagina => "+pf.getWidth());
 		System.out.println("Altezza pagina => "+pf.getHeight());
 		System.out.println("Punto X del primo carattere da stampare => "+pf.getImageableX());
 		System.out.println("Punto Y del primo carattere da stampare => "+pf.getImageableY());
 		System.out.println("Larghezza dell'area di stampa => "+pf.getImageableWidth());
-		System.out.println("Altezza dell'area di stampa => "+pf.getImageableHeight());
+		System.out.println("Altezza dell'area di stampa => "+pf.getImageableHeight()); */
 		int orientation = pf.getOrientation();
 		String strOrientation = "";
 		switch(orientation) {
