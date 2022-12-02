@@ -31,7 +31,9 @@ public class PrintDialog implements Printable {
 		this.setPrintDialog();
 	}
 
-	//User prints the document
+	/**
+	 * User prints the document
+	 */
 	@Override
 	public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
 		// TODO Auto-generated method stub
@@ -49,7 +51,9 @@ public class PrintDialog implements Printable {
 		return PAGE_EXISTS;
 	}
 	
-	//Set and display the print dialog
+	/**
+	 * Set and display the print dialog
+	 */
 	private void setPrintDialog() {
 		this.pj = PrinterJob.getPrinterJob();
 		PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
@@ -68,7 +72,12 @@ public class PrintDialog implements Printable {
 		}//if(ok) {
 	}
 	
-	//show print info when user click print button
+	/**
+	 * show print info when user click print button
+	 * @param g
+	 * @param pf
+	 * @param pi
+	 */
 	private void showPrintInfo(Graphics g, PageFormat pf, int pi) {
 		/* System.out.println("Larghezza pagina => "+pf.getWidth());
 		System.out.println("Altezza pagina => "+pf.getHeight());

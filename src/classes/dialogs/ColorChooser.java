@@ -1,13 +1,11 @@
 package classes.dialogs;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.Properties;
 
 import javax.swing.JColorChooser;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;

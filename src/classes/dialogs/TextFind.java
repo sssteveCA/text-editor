@@ -30,7 +30,7 @@ public class TextFind extends JDialog implements Constants{
 	public final JCheckBox jc_textCase = new JCheckBox(TF_JC1);
 	public final JCheckBox jc_textAround = new JCheckBox(TF_JC2);
 	public final JRadioButton jr_up = new JRadioButton(TF_RB1); //RadioButton 'Su'
-	public final JRadioButton jr_down = new JRadioButton(TF_RB2); //RadioButton 'Gi�'
+	public final JRadioButton jr_down = new JRadioButton(TF_RB2); //RadioButton 'Giù'
 	public final JTextField jt_field = new JTextField();
 	private JLabel jl_find; //Label 'Trova:'
 	private JPanel jp_direction; //JPanel 'Direzione'
