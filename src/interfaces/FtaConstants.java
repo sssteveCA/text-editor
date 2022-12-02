@@ -24,7 +24,7 @@ public interface FtaConstants {
 	
 	//Message exceptions
 	public enum Exceptions{
-		JTA_NULL("L'istanza di JTextArea � null"), //JTextArea instance is null
+		JTA_NULL("L'istanza di JTextArea è null"), //JTextArea instance is null
 		SEARCH_NULL("Nessun testo da cercare inserito"); //Search string is null
 		
 		private final String msg;

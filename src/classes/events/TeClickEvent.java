@@ -116,15 +116,7 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 		else if(cmd.equals(Menu.mFormat.AUTO_WRAP.toString()) || cmd.equals(Menu.mFormat.AUTO_WRAP.toString()+" => ON")) {
 			//Format -> Auto Wrap
 			//enable word wrap if is disabled and viceversa
-			boolean lineWrap = this.te.textarea.getLineWrap();
-			boolean wordWrap = this.te.textarea.getWrapStyleWord();
-			lineWrap = !lineWrap;
-			wordWrap = !wordWrap;
-			this.te.textarea.setLineWrap(lineWrap);
-			this.te.textarea.setWrapStyleWord(wordWrap);
-			boolean enabled = (lineWrap && wordWrap); //True if text wrap is enabled
-			if(enabled)this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString()+" => ON");
-			else this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString());
+			this.setWrapOptions();
 		}//else if(cmd.equals(Menu.mFormat.AUTO_WRAP.toString()) || cmd.equals("V "+Menu.mFormat.AUTO_WRAP.toString())) {
 		else if(cmd == Menu.mFormat.FONT.toString()) {
 			//Format -> Font
@@ -199,5 +191,19 @@ public class TeClickEvent implements ActionListener,MenuVals,FmConstants,Constan
 			JOptionPane.showMessageDialog(this.te, e1.getMessage());
 		}	
 	}
-	
+
+	/**
+	 * Enable or disable text wrapping in textarea
+	 */
+	private void setWrapOptions(){
+		boolean lineWrap = this.te.textarea.getLineWrap();
+		boolean wordWrap = this.te.textarea.getWrapStyleWord();
+		lineWrap = !lineWrap;
+		wordWrap = !wordWrap;
+		this.te.textarea.setLineWrap(lineWrap);
+		this.te.textarea.setWrapStyleWord(wordWrap);
+		boolean enabled = (lineWrap && wordWrap); //True if text wrap is enabled
+		if(enabled)this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString()+" => ON");
+		else this.te.miAutoWrap.setText(Menu.mFormat.AUTO_WRAP.toString());
+	}	
 }
